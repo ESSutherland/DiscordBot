@@ -1,6 +1,7 @@
 import commands.ColorReqCommand;
 import data.Data;
 import events.DeleteRole;
+import events.JoinRole;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 
@@ -24,5 +25,6 @@ public class Main {
         JDA jda = new JDABuilder(Data.prop.getProperty("token")).setGuildSubscriptionsEnabled(true).build();
         jda.addEventListener(new ColorReqCommand());
         jda.addEventListener(new DeleteRole());
+        jda.addEventListener(new JoinRole());
     }
 }
