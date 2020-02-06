@@ -8,5 +8,6 @@ public class JoinRole extends ListenerAdapter {
 
     public void onGuildMemberJoin(GuildMemberJoinEvent ev){
         ev.getGuild().addRoleToMember(ev.getMember(), ev.getGuild().getRoleById(Data.prop.getProperty("defaultRole"))).queue();
+        System.out.println("Added default role to " + ev.getMember().getUser().getName());
     }
 }

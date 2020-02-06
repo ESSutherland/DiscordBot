@@ -7,11 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ada6424b-062e-4699-a1aa-1d436a223d8b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/events/JoinRole.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Discord_Bot_jar/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Discord_Bot_jar/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Discord_Bot_jar/Discord Bot.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Discord_Bot_jar/Discord Bot.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/events/JoinRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/events/JoinRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +72,19 @@
       <option name="presentableId" value="Default" />
       <updated>1580700919576</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added join role assignment">
+      <created>1580970883237</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1580970883237</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added join role assignment" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added join role assignment" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="179" key="#Project_Structure" timestamp="1580701068659">
@@ -88,22 +99,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580773576610" />
-    <state width="1877" height="247" key="GridCell.Tab.0.bottom" timestamp="1580970556489">
+    <state x="614" y="115" key="CommitChangelistDialog2" timestamp="1580970882508">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="247" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580970556489" />
-    <state width="1877" height="247" key="GridCell.Tab.0.center" timestamp="1580970556488">
+    <state x="614" y="115" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580970882508" />
+    <state width="1877" height="247" key="GridCell.Tab.0.bottom" timestamp="1580971355892">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="247" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580970556488" />
-    <state width="1877" height="247" key="GridCell.Tab.0.left" timestamp="1580970556488">
+    <state width="1877" height="247" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580971355892" />
+    <state width="1877" height="247" key="GridCell.Tab.0.center" timestamp="1580971355892">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="247" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580970556488" />
-    <state width="1877" height="247" key="GridCell.Tab.0.right" timestamp="1580970556489">
+    <state width="1877" height="247" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580971355892" />
+    <state width="1877" height="247" key="GridCell.Tab.0.left" timestamp="1580971355892">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="247" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580970556489" />
+    <state width="1877" height="247" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580971355892" />
+    <state width="1877" height="247" key="GridCell.Tab.0.right" timestamp="1580971355892">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="247" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580971355892" />
     <state x="440" y="95" key="SettingsEditor" timestamp="1580785853354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
