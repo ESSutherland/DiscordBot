@@ -9,9 +9,11 @@ import net.dv8tion.jda.api.entities.Activity;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Properties;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String args[]) throws Exception{
+        Scanner in = new Scanner(System.in);
 
         Data.loadData();
 
