@@ -4,6 +4,7 @@ import events.DeleteRole;
 import events.JoinRole;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.entities.Activity;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -22,7 +23,7 @@ public class Main {
 
         }
 
-        JDA jda = new JDABuilder(Data.prop.getProperty("token")).setGuildSubscriptionsEnabled(true).build();
+        JDA jda = new JDABuilder(Data.prop.getProperty("token")).setGuildSubscriptionsEnabled(true).setActivity(Activity.playing("In The Snow.")).build();
         jda.addEventListener(new ColorReqCommand());
         jda.addEventListener(new DeleteRole());
         jda.addEventListener(new JoinRole());
