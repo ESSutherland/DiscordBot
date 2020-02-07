@@ -1,75 +1,119 @@
 package data;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Properties;
+import java.sql.*;
 
 public class Data {
 
-    public static ArrayList<String> userIds = new ArrayList<String>();
-    public static ArrayList<String> roleIds = new ArrayList<String>();
-    public static ArrayList<String> userNames = new ArrayList<String>();
+    public static String userID = "";
+    public static String userNAME = "";
+    public static String roleID = "";
+    public static String colorHEX = "";
+
     public static Properties prop = new Properties();
 
-    public static void loadData(){
-        JSONParser jsonParser = new JSONParser();
-        try{
+    public static Connection con;
+
+    public static void loadData() {
+        try {
             FileInputStream ip = new FileInputStream("config.properties");
             prop.load(ip);
-            FileReader reader = new FileReader("users.json");
-            Object obj = jsonParser.parse(reader);
-            if(obj != null) {
-                JSONArray users = (JSONArray) obj;
-
-                for (int i = 0; i < users.size(); i++) {
-                    JSONObject j = (JSONObject) users.get(i);
-                    JSONObject user = (JSONObject) j.get("user");
-
-                    userNames.add((String) user.get("userName"));
-                    userIds.add((String) user.get("userId"));
-                    roleIds.add((String) user.get("roleId"));
-                }
-            }
-        }
-        catch (FileNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        catch (ParseException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void writeData(){
-        JSONArray users = new JSONArray();
-
-        for(int i = 0; i < userIds.size(); i++) {
-            JSONObject idData = new JSONObject();
-            idData.put("userName", userNames.get(i));
-            idData.put("userId", userIds.get(i));
-            idData.put("roleId", roleIds.get(i));
-
-            JSONObject userData = new JSONObject();
-            userData.put( "user", idData);
-
-            users.add(userData);
-        }
-        //Write JSON file
         try {
-            FileWriter file = new FileWriter("users.json");
-            file.write(users.toJSONString());
-            file.flush();
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            con = DriverManager.getConnection(Data.prop.getProperty("dbLink"), Data.prop.getProperty("dbUser"), Data.prop.getProperty("dbPass"));
+            Statement s = con.createStatement();
+            ResultSet rs = s.executeQuery("select * from users");
 
-        } catch (IOException w) {
-            w.printStackTrace();
+            while (rs.next()) {
+                System.out.println(rs.getString(1) + " - " + rs.getString(2));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
 
+    public static void addUserToDB(String userId, String name, String roleId, String colorHex) {
+        try {
+            String update = "insert into users(userID, userName, roleID, colorHex) values(?, ?, ?, ?)";
+            PreparedStatement ps = con.prepareStatement(update);
+            ps.setString(1, userId);
+            ps.setString(2, name);
+            ps.setString(3, roleId);
+            ps.setString(4, colorHex);
+            ps.executeUpdate();
+
+            userID = userId;
+            userNAME = name;
+            roleID = roleId;
+            colorHEX = colorHex;
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public static void updateUserDB(String userId, String name, String roleId, String colorHex) {
+        try {
+            String search = "select * from users where userID = ?";
+            PreparedStatement ps = con.prepareStatement(search);
+            ps.setString(1, userId);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                String update = "update users set userName = ?, roleID = ?, colorHex = ? where userID = ?";
+                ps = con.prepareStatement(update);
+                ps.setString(1, name);
+                ps.setString(2, roleId);
+                ps.setString(3, colorHex);
+                ps.setString(4, userId);
+                ps.executeUpdate();
+
+                userID = userId;
+                userNAME = name;
+                roleID = roleId;
+                colorHEX = colorHex;
+            } else {
+                addUserToDB(userId, name, roleId, colorHex);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static boolean findUserInDB(String userId) {
+        try {
+            String search = "select * from users where userID = ?";
+            PreparedStatement ps = con.prepareStatement(search);
+            ps.setString(1, userId);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                userID = rs.getString("userID");
+                userNAME = rs.getString("userName");
+                roleID = rs.getString("roleID");
+                colorHEX = rs.getString("colorHex");
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static void removeUserFromDB(String userId) {
+        try {
+            String delete = "delete from users where userId = ?";
+            PreparedStatement ps = con.prepareStatement(delete);
+            ps.setString(1, userId);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

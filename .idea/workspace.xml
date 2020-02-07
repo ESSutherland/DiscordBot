@@ -6,13 +6,22 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ada6424b-062e-4699-a1aa-1d436a223d8b" name="Default Changelist" comment="">
+    <list default="true" id="ada6424b-062e-4699-a1aa-1d436a223d8b" name="Default Changelist" comment="added playing status">
+      <change afterPath="$PROJECT_DIR$/db/users.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Discord_Bot_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Discord_Bot_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/config.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Discord_Bot_jar/Discord Bot.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Discord_Bot_jar/Discord Bot.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/commands/ColorReqCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/ColorReqCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Data.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/events/DeleteRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/events/DeleteRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/commands/ColorReqCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/ColorReqCommand.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/data/Data.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/Data.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/events/DeleteRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/events/DeleteRole.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/users.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +54,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="last_opened_file_path" value="$MAVEN_REPOSITORY$/mysql/mysql-connector-java/8.0.19/mysql-connector-java-8.0.19.jar!/" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -95,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580974235105</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added playing status">
+      <created>1580979959974</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1580979959974</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -117,34 +134,50 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580773576610" />
-    <state x="614" y="115" key="CommitChangelistDialog2" timestamp="1580974234461">
+    <state x="690" y="275" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1581063409713">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="614" y="115" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580974234461" />
-    <state width="1877" height="247" key="GridCell.Tab.0.bottom" timestamp="1580979382425">
+    <state x="690" y="275" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581063409713" />
+    <state x="614" y="115" key="CommitChangelistDialog2" timestamp="1580980012280">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="247" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580979382425" />
-    <state width="1877" height="247" key="GridCell.Tab.0.center" timestamp="1580979382425">
+    <state x="614" y="115" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580980012280" />
+    <state x="1173" y="240" key="FileChooserDialogImpl" timestamp="1581063455984">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="247" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580979382425" />
-    <state width="1877" height="247" key="GridCell.Tab.0.left" timestamp="1580979382424">
+    <state x="1173" y="240" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581063455984" />
+    <state width="1877" height="247" key="GridCell.Tab.0.bottom" timestamp="1581064149298">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="247" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580979382424" />
-    <state width="1877" height="247" key="GridCell.Tab.0.right" timestamp="1580979382425">
+    <state width="1877" height="247" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581064149298" />
+    <state width="1877" height="247" key="GridCell.Tab.0.center" timestamp="1581064149298">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="247" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580979382425" />
-    <state x="440" y="95" key="SettingsEditor" timestamp="1580973533909">
+    <state width="1877" height="247" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581064149298" />
+    <state width="1877" height="247" key="GridCell.Tab.0.left" timestamp="1581064149297">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="95" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580973533909" />
-    <state x="661" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1580979782642">
+    <state width="1877" height="247" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581064149297" />
+    <state width="1877" height="247" key="GridCell.Tab.0.right" timestamp="1581064149298">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="661" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580979782642" />
+    <state width="1877" height="247" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581064149298" />
+    <state x="672" y="237" key="MultipleFileMergeDialog" timestamp="1580979992930">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="672" y="237" key="MultipleFileMergeDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580979992930" />
+    <state x="440" y="95" key="SettingsEditor" timestamp="1581063462260">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="440" y="95" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581063462260" />
+    <state x="552" y="254" key="Vcs.Push.Dialog.v2" timestamp="1580979963349">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="254" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580979963349" />
+    <state x="661" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1581064736214">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="661" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581064736214" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1580769263896">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
