@@ -6,22 +6,27 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ada6424b-062e-4699-a1aa-1d436a223d8b" name="Default Changelist" comment="added playing status">
-      <change afterPath="$PROJECT_DIR$/db/users.sql" afterDir="false" />
+    <list default="true" id="ada6424b-062e-4699-a1aa-1d436a223d8b" name="Default Changelist" comment="made it easier to implement more commands">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/commands/Commands.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/events/UserLeave.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/Discord_Bot_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Discord_Bot_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/config.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Discord_Bot_jar/Discord Bot.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Discord_Bot_jar/Discord Bot.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Discord_Bot_jar/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Discord_Bot_jar/users.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/commands/ColorReqCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/ColorReqCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Data.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/events/DeleteRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/events/DeleteRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/events/JoinRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/events/UserJoin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/ColorReqCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/ColorReqCommand.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/data/Data.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/Data.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/events/DeleteRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/events/DeleteRole.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/users.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,10 +59,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$MAVEN_REPOSITORY$/mysql/mysql-connector-java/8.0.19/mysql-connector-java-8.0.19.jar!/" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -112,24 +119,54 @@
       <option name="project" value="LOCAL" />
       <updated>1580979959974</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="switched from json to DB">
+      <created>1581064776664</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1581064776664</updated>
+    </task>
+    <task id="LOCAL-00006" summary="switched from json to DB">
+      <created>1581064829241</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1581064829241</updated>
+    </task>
+    <task id="LOCAL-00007" summary="switched from json to DB">
+      <created>1581064856448</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1581064856448</updated>
+    </task>
+    <task id="LOCAL-00008" summary="made it easier to implement more commands">
+      <created>1581194432139</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1581194432139</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added join role assignment" />
     <MESSAGE value="Added logging" />
     <MESSAGE value="added playing status" />
-    <option name="LAST_COMMIT_MESSAGE" value="added playing status" />
+    <MESSAGE value="switched from json to DB" />
+    <MESSAGE value="made it easier to implement more commands" />
+    <option name="LAST_COMMIT_MESSAGE" value="made it easier to implement more commands" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="179" key="#Project_Structure" timestamp="1580701068659">
+    <state x="552" y="179" key="#Project_Structure" timestamp="1581184046466">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="179" key="#Project_Structure/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580701068659" />
-    <state x="690" y="304" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1580785840785">
+    <state x="552" y="179" key="#Project_Structure/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581184046466" />
+    <state x="690" y="304" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1581184399230">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="304" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580785840785" />
+    <state x="690" y="304" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581184399230" />
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1580773576610">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -138,53 +175,53 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581063409713" />
-    <state x="614" y="115" key="CommitChangelistDialog2" timestamp="1581064828660">
+    <state x="76" y="30" key="CommitChangelistDialog2" timestamp="1581194491558">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="614" y="115" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581064828660" />
+    <state x="76" y="30" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581194491558" />
     <state x="1173" y="240" key="FileChooserDialogImpl" timestamp="1581063455984">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1173" y="240" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581063455984" />
-    <state width="1877" height="247" key="GridCell.Tab.0.bottom" timestamp="1581064149298">
+    <state width="1877" height="247" key="GridCell.Tab.0.bottom" timestamp="1581194360146">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="247" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581064149298" />
-    <state width="1877" height="247" key="GridCell.Tab.0.center" timestamp="1581064149298">
+    <state width="1877" height="247" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581194360146" />
+    <state width="1877" height="247" key="GridCell.Tab.0.center" timestamp="1581194360145">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="247" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581064149298" />
-    <state width="1877" height="247" key="GridCell.Tab.0.left" timestamp="1581064149297">
+    <state width="1877" height="247" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581194360145" />
+    <state width="1877" height="247" key="GridCell.Tab.0.left" timestamp="1581194360145">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="247" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581064149297" />
-    <state width="1877" height="247" key="GridCell.Tab.0.right" timestamp="1581064149298">
+    <state width="1877" height="247" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581194360145" />
+    <state width="1877" height="247" key="GridCell.Tab.0.right" timestamp="1581194360146">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="247" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581064149298" />
+    <state width="1877" height="247" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581194360146" />
     <state x="672" y="237" key="MultipleFileMergeDialog" timestamp="1581064807052">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="672" y="237" key="MultipleFileMergeDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581064807052" />
-    <state x="440" y="95" key="SettingsEditor" timestamp="1581063462260">
+    <state x="440" y="95" key="SettingsEditor" timestamp="1581184420307">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="95" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581063462260" />
-    <state x="552" y="254" key="Vcs.Push.Dialog.v2" timestamp="1581064782578">
+    <state x="440" y="95" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581184420307" />
+    <state x="552" y="254" key="Vcs.Push.Dialog.v2" timestamp="1581064858893">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="254" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581064782578" />
-    <state x="661" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1581064736214">
+    <state x="552" y="254" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581064858893" />
+    <state x="661" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1581177133541">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="661" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581064736214" />
+    <state x="661" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581177133541" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1580769263896">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580769263896" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1580776163909">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1581178364848">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580776163909" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581178364848" />
   </component>
 </project>

@@ -6,6 +6,8 @@ import java.sql.*;
 
 public class Data {
 
+    public static String PREFIX = "!";
+
     public static String userID = "";
     public static String userNAME = "";
     public static String roleID = "";
@@ -19,44 +21,33 @@ public class Data {
         try {
             FileInputStream ip = new FileInputStream("config.properties");
             prop.load(ip);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             con = DriverManager.getConnection(Data.prop.getProperty("dbLink"), Data.prop.getProperty("dbUser"), Data.prop.getProperty("dbPass"));
-            Statement s = con.createStatement();
-            ResultSet rs = s.executeQuery("select * from users");
-
-            while (rs.next()) {
-                System.out.println(rs.getString(1) + " - " + rs.getString(2));
-            }
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
-    public static void addUserToDB(String userId, String name, String roleId, String colorHex) {
+    public static void addUserToDB(String userId, String userName) {
         try {
-            String update = "insert into users(userID, userName, roleID, colorHex) values(?, ?, ?, ?)";
+            String update = "insert into users(userID, userName) values(?, ?)";
             PreparedStatement ps = con.prepareStatement(update);
             ps.setString(1, userId);
-            ps.setString(2, name);
-            ps.setString(3, roleId);
-            ps.setString(4, colorHex);
+            ps.setString(2, userName);
+
             ps.executeUpdate();
 
             userID = userId;
-            userNAME = name;
-            roleID = roleId;
-            colorHEX = colorHex;
+            userNAME = userName;
+            roleID = "";
+            colorHEX = "";
 
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
-    public static void updateUserDB(String userId, String name, String roleId, String colorHex) {
+    public static void updateUserColorInDB(String userId, String userName, String roleId, String colorHex){
         try {
             String search = "select * from users where userID = ?";
             PreparedStatement ps = con.prepareStatement(search);
@@ -66,18 +57,19 @@ public class Data {
             if (rs.next()) {
                 String update = "update users set userName = ?, roleID = ?, colorHex = ? where userID = ?";
                 ps = con.prepareStatement(update);
-                ps.setString(1, name);
+                ps.setString(1, userName);
                 ps.setString(2, roleId);
                 ps.setString(3, colorHex);
                 ps.setString(4, userId);
                 ps.executeUpdate();
 
                 userID = userId;
-                userNAME = name;
+                userNAME = userName;
                 roleID = roleId;
                 colorHEX = colorHex;
             } else {
-                addUserToDB(userId, name, roleId, colorHex);
+                addUserToDB(userId, userName);
+                updateUserColorInDB(userId, userName, roleId, colorHex);
             }
         } catch (Exception e) {
             e.printStackTrace();

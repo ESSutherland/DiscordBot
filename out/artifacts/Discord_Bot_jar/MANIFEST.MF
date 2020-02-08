@@ -1,4 +1,0 @@
-Manifest-Version: 1.0
-Automatic-Module-Name: net.dv8tion.jda
-Implementation-Version: 4.1.1_105
-Main-Class: Main
