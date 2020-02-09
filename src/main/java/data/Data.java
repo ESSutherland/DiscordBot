@@ -1,6 +1,7 @@
 package data;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Properties;
 import java.sql.*;
 
@@ -95,6 +96,105 @@ public class Data {
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    public static void addExpToUser(String userId, int numExp){
+        try {
+            String update = "update users set userExp = ? where userId = ?";
+            PreparedStatement ps = con.prepareStatement(update);
+
+            int pointsToAdd = getUserExp(userId) + numExp;
+
+            ps.setInt(1, pointsToAdd);
+            ps.setString(2, userId);
+
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public static void setUserExp(String userId, int numExp){
+        try {
+            String update = "update users set userExp = ? where userId = ?";
+            PreparedStatement ps = con.prepareStatement(update);
+
+            ps.setInt(1, numExp);
+            ps.setString(2, userId);
+
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public static int getUserExp(String userId){
+        try{
+            String exp = "select userExp from users where userId = ?";
+            PreparedStatement ps = con.prepareStatement(exp);
+            ps.setString(1, userId);
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()){
+                return rs.getInt("userExp");
+            }
+            else{
+                return 0;
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public static void levelUpUser(String userId){
+        try {
+            String update = "update users set userLevel = ? where userId = ?";
+            PreparedStatement ps = con.prepareStatement(update);
+
+            int newLevel = getUserLevel(userId) + 1;
+
+            ps.setInt(1, newLevel);
+            ps.setString(2, userId);
+
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public static int getUserLevel(String userId){
+        try{
+            String level = "select userLevel from users where userId = ?";
+            PreparedStatement ps = con.prepareStatement(level);
+            ps.setString(1, userId);
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()){
+                return rs.getInt("userLevel");
+            }
+            else{
+                return 0;
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public static ResultSet getTopLevels(){
+        try{
+            String level = "select * from users order by userLevel desc, userExp desc limit 0,5";
+            Statement s = con.createStatement();
+            ResultSet rs = s.executeQuery(level);
+            return rs;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return null;
         }
     }
 

@@ -3,11 +3,10 @@ package commands;
 import data.Data;
 import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.awt.*;
 
-public class ColorReqCommand extends ListenerAdapter {
+public class ColorReqCommand {
 
 
     public static void command(GuildMessageReceivedEvent e, String message[]){
@@ -17,17 +16,14 @@ public class ColorReqCommand extends ListenerAdapter {
         String roleId;
         String colorHex;
 
-        if(!Data.findUserInDB(userId)){
-            Data.addUserToDB(userId, userName);
-        }
-        if(!e.getMember().getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("colorChangeRoleId")))){
-            e.getChannel().sendMessage("`You must be a Nitro Booster to change your color.`").queue();
+        if(!e.getMember().getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("nitroRoleId")))){
+            e.getChannel().sendMessage("> You must be a Nitro Booster to change your color.").queue();
         }
         else if(!e.getMessage().getChannel().getId().equals(Data.prop.getProperty("nitroChannelId"))){}
         else{
             //Check if message is long enough
             if(message.length < 2){
-                e.getChannel().sendMessage("`Please include the Hex Color Code`").queue();
+                e.getChannel().sendMessage("> Please include the Hex Color Code").queue();
             }
             else{
                 colorHex = message[1];
@@ -42,7 +38,7 @@ public class ColorReqCommand extends ListenerAdapter {
                         e.getGuild().getRoleById(roleId).getManager().setName(userName).setColor(color).queue();
                         Data.updateUserColorInDB(userId, userName, roleId, colorHex);
 
-                        e.getChannel().sendMessage("`Updated color for user: " + userName + "`").queue();
+                        e.getChannel().sendMessage("> Updated color for user: " + e.getMember().getAsMention() + ".").queue();
                         System.out.println("Updated Role: " + roleId + " for User: " + userName + " (" + userId + ") - " + color.toString());
                     }
                     else{
@@ -51,13 +47,13 @@ public class ColorReqCommand extends ListenerAdapter {
                         e.getGuild().modifyRolePositions(false).selectPosition(r).moveTo(Integer.parseInt(Data.prop.getProperty("rolePosition"))).queue();
                         e.getGuild().addRoleToMember(e.getMember(), r).queue();
                         Data.updateUserColorInDB(userId, userName, roleId, colorHex);
-                        e.getChannel().sendMessage("`Created color for user: " + userName + "`").queue();
+                        e.getChannel().sendMessage("> Created color for user: " + e.getMember().getAsMention() + ".").queue();
                         System.out.println("Created Role: " + roleId + " for User: " + userName + " (" + userId + ") - " + color.toString());
                     }
                 }
                 catch (NumberFormatException n){
                     System.out.println(n);
-                    e.getChannel().sendMessage("`Please enter a valid Hex color code.`").queue();
+                    e.getChannel().sendMessage("> Please enter a valid Hex color code.").queue();
                 }
             }
         }
