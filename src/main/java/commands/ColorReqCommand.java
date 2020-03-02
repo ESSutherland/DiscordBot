@@ -9,7 +9,7 @@ import java.awt.*;
 public class ColorReqCommand {
 
 
-    public static void command(GuildMessageReceivedEvent e, String message[]){
+    public static void command(GuildMessageReceivedEvent e, String[] message){
 
         String userId = e.getMember().getUser().getId();
         String userName = e.getMember().getUser().getName();
@@ -29,17 +29,23 @@ public class ColorReqCommand {
                 colorHex = message[1];
                 //Create new entries for the Role
                 try{
+                    if(colorHex.charAt(0) == '#'){
+                        colorHex = colorHex.substring(1);
+                    }
+
                     //Convert hex to color
                     String hex = ("#" + colorHex);
                     Color color = Color.decode(hex);
 
-                    if(Data.roleID.length() > 1){
-                        roleId = Data.roleID;
-                        e.getGuild().getRoleById(roleId).getManager().setName(userName).setColor(color).queue();
-                        Data.updateUserColorInDB(userId, userName, roleId, colorHex);
+                    if(Data.findUserInDB(userId)){
+                        roleId = Data.getDBUser(userId).getRoleId();
+                        if(roleId.length() > 1){
+                            e.getGuild().getRoleById(roleId).getManager().setName(userName).setColor(color).queue();
+                            Data.updateUserColorInDB(userId, userName, roleId, colorHex);
 
-                        e.getChannel().sendMessage("> Updated color for user: " + e.getMember().getAsMention() + ".").queue();
-                        System.out.println("Updated Role: " + roleId + " for User: " + userName + " (" + userId + ") - " + color.toString());
+                            e.getChannel().sendMessage("> Updated color for user: " + e.getMember().getAsMention() + ".").queue();
+                            System.out.println("Updated Role: " + roleId + " for User: " + userName + " (" + userId + ") - " + color.toString());
+                        }
                     }
                     else{
                         Role r = e.getGuild().createRole().setName(userName).setColor(color).complete();

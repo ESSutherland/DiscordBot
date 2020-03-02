@@ -32,8 +32,7 @@ public class LevelTopCommand {
                         break;
                     default: userRank = "**" + (count) + " - " + rs.getString("userName") + "**";
                 }
-
-                eb.addField(userRank, "> Level: " + rs.getInt("userLevel"), false);
+                eb.addField(userRank, "> Level: " + rs.getInt("userLevel") + " - Exp: " + rs.getDouble("userExp") + "/" + Data.prop.getProperty("levelExp"), false);
                 count++;
             }
         }

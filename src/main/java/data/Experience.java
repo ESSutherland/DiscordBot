@@ -4,32 +4,37 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 public class Experience {
 
-    public static void addExp(GuildMessageReceivedEvent e, int numExp){
+    public static void addExp(GuildMessageReceivedEvent e, double numExp, String userId, boolean useMultiplier){
+        String userName = e.getGuild().getMemberById(userId).getAsMention();
 
-        String userId = e.getMember().getUser().getId();
-        String userName = e.getMember().getUser().getAsMention();
-
-        int multiplier;
-        if(e.getMember().getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("nitroRoleId")))){
-            multiplier = 3;
+        double multiplier;
+        if(e.getGuild().getMemberById(userId).getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("nitroRoleId"))) && useMultiplier){
+            multiplier = Double.parseDouble(Data.prop.getProperty("nitroExp"));
         }
-        else if(e.getMember().getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("subRoleId")))){
-            multiplier = 2;
+        else if(e.getGuild().getMemberById(userId).getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("subRoleId"))) && useMultiplier){
+            multiplier = Double.parseDouble(Data.prop.getProperty("subExp"));
         }
         else{
-            multiplier = 1;
+            multiplier = Double.parseDouble(Data.prop.getProperty("defaultExp"));
         }
 
-        int expToAdd = numExp * multiplier;
-
-        if(Data.getUserExp(userId) + expToAdd > Integer.parseInt(Data.prop.getProperty("levelExp"))){
-            expToAdd = (Data.getUserExp(userId) + expToAdd) - Integer.parseInt(Data.prop.getProperty("levelExp"));
-            Data.levelUpUser(userId);
-            e.getChannel().sendMessage("> Congratulations, " + userName + " for reaching level " + Data.getUserLevel(userId) + "!").queue();
-            Data.setUserExp(userId, expToAdd);
+        double expToAdd = numExp * multiplier;
+        double totalExp = (Data.getUserExp(userId) + expToAdd);
+        if(totalExp >= Double.parseDouble(Data.prop.getProperty("levelExp"))){
+            while(totalExp >= Double.parseDouble(Data.prop.getProperty("levelExp"))){
+                totalExp -= Double.parseDouble(Data.prop.getProperty("levelExp"));
+                Data.levelUpUser(userId);
+                e.getChannel().sendMessage("> Congratulations, " + userName + " for reaching level " + Data.getUserLevel(userId) + "!").queue();
+                Data.setUserExp(userId, totalExp);
+            }
         }
         else{
             Data.addExpToUser(userId, expToAdd);
         }
+    }
+
+    public static void addExp(GuildMessageReceivedEvent e, double numExp, boolean useMultiplier){
+        String userId = e.getMember().getUser().getId();
+        addExp(e, numExp, userId, useMultiplier);
     }
 }
