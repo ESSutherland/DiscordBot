@@ -15,7 +15,7 @@ public class UpdateCommand {
             if(user.getUserId().equalsIgnoreCase(userId) && !user.getUserName().equalsIgnoreCase(userName)){
                 Data.updateUserInDB(userId, userName);
                 System.out.println("Updating name for: " + user.getUserName() + " -> " + userName);
-                if(user.getRoleId().length() > 1){
+                if(user.getRoleId() != null){
                     e.getGuild().getRoleById(user.getRoleId()).getManager().setName(userName).queue();
                 }
             }

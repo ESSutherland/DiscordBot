@@ -7,22 +7,22 @@ public class DBUser {
     private String colorHex;
     private int userLevel;
     private double userExp;
+    private String mcUsername;
 
-    public DBUser(String userId, String userName, String roleId, String colorHex, int userLevel, double userExp){
+    public DBUser(String userId, String userName, String roleId, String colorHex, int userLevel, double userExp, String mcUsername){
         this.userId = userId;
         this.userName = userName;
         this.roleId = roleId;
         this.colorHex = colorHex;
         this.userLevel = userLevel;
         this.userExp = userExp;
+        this.mcUsername = mcUsername;
     }
     public void setUserId(String userId){
         this.userId = userId;
     }
 
-    public String getUserId() {
-        return userId;
-    }
+    public String getUserId() { return userId; }
 
     public void setUserName(String userName) {
         this.userName = userName;
@@ -36,9 +36,7 @@ public class DBUser {
         this.roleId = roleId;
     }
 
-    public String getRoleId() {
-        return roleId;
-    }
+    public String getRoleId() { return roleId; }
 
     public void setColorHex(String colorHex) {
         this.colorHex = colorHex;
@@ -63,4 +61,10 @@ public class DBUser {
     public double getUserExp() {
         return userExp;
     }
+
+    public void setMcUsername(String mcUsername){
+        this.mcUsername = mcUsername;
+    }
+
+    public String getMcUsername() { return mcUsername; }
 }

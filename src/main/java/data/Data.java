@@ -17,10 +17,22 @@ public class Data {
 
     public static void connectDB(){
         try {
+            String url = "jdbc:sqlite:users.db";
+            String sql = "CREATE TABLE IF NOT EXISTS users (\n"
+                    + "    userId integer PRIMARY KEY,\n"
+                    + "    userName text NOT NULL,\n"
+                    + "    roleId text,\n"
+                    + "    colorHex text,\n"
+                    + "    userLevel integer DEFAULT 1,\n"
+                    + "    userExp double DEFAULT 0,\n"
+                    + "    mcUsername text\n"
+                    + ");";
+            Class.forName("org.sqlite.JDBC");
+            con = DriverManager.getConnection(url);
+            Statement s = con.createStatement();
+            s.execute(sql);
             FileInputStream ip = new FileInputStream("config.properties");
             prop.load(ip);
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            con = DriverManager.getConnection(Data.prop.getProperty("dbLink"), Data.prop.getProperty("dbUser"), Data.prop.getProperty("dbPass"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -34,7 +46,7 @@ public class Data {
             userList = new ArrayList<>();
             while(rs.next()){
                 userList.add(new DBUser(rs.getString("userID"), rs.getString("userName"),
-                        rs.getString("roleId"), rs.getString("colorHex"), rs.getInt("userLevel"), rs.getDouble("userExp")));
+                        rs.getString("roleId"), rs.getString("colorHex"), rs.getInt("userLevel"), rs.getDouble("userExp"), rs.getString("mcUsername")));
             }
         } catch (Exception e){
             e.printStackTrace();
@@ -43,7 +55,6 @@ public class Data {
 
     public static void addUserToDB(String userId, String userName) {
         try {
-            connectDB();
             String update = "insert into users(userId, userName) values(?, ?)";
             PreparedStatement ps = con.prepareStatement(update);
             ps.setString(1, userId);
@@ -51,14 +62,13 @@ public class Data {
 
             ps.executeUpdate();
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         loadData();
     }
 
     public static void updateUserInDB(String userId, String userName) {
         try {
-            connectDB();
             String search = "select * from users where userId = ?";
             PreparedStatement ps = con.prepareStatement(search);
             ps.setString(1, userId);
@@ -76,20 +86,19 @@ public class Data {
             }
             loadData();
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 
     public static void updateUserColorInDB(String userId, String userName, String roleId, String colorHex){
         try {
-            connectDB();
-            String search = "select * from users where userID = ?";
+            String search = "select * from users where userId = ?";
             PreparedStatement ps = con.prepareStatement(search);
             ps.setString(1, userId);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                String update = "update users set userName = ?, roleID = ?, colorHex = ? where userID = ?";
+                String update = "update users set userName = ?, roleId = ?, colorHex = ? where userId = ?";
                 ps = con.prepareStatement(update);
                 ps.setString(1, userName);
                 ps.setString(2, roleId);
@@ -108,7 +117,6 @@ public class Data {
 
     public static boolean findUserInDB(String userId) {
         try {
-            connectDB();
             loadData();
             for(DBUser user : userList){
                 if(user.getUserId().equalsIgnoreCase(userId)){
@@ -133,7 +141,6 @@ public class Data {
 
     public static void addExpToUser(String userId, double numExp){
         try {
-            connectDB();
             String update = "update users set userExp = ? where userId = ?";
             PreparedStatement ps = con.prepareStatement(update);
 
@@ -145,13 +152,12 @@ public class Data {
             ps.executeUpdate();
             loadData();
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 
     public static void setUserExp(String userId, double numExp){
         try {
-            connectDB();
             String update = "update users set userExp = ? where userId = ?";
             PreparedStatement ps = con.prepareStatement(update);
 
@@ -161,13 +167,12 @@ public class Data {
             ps.executeUpdate();
             loadData();
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 
     public static double getUserExp(String userId){
         try{
-            connectDB();
             loadData();
             String exp = "select userExp from users where userId = ?";
             PreparedStatement ps = con.prepareStatement(exp);
@@ -189,7 +194,6 @@ public class Data {
 
     public static void levelUpUser(String userId){
         try {
-            connectDB();
             String update = "update users set userLevel = ? where userId = ?";
             PreparedStatement ps = con.prepareStatement(update);
 
@@ -201,13 +205,12 @@ public class Data {
             ps.executeUpdate();
             loadData();
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 
     public static int getUserLevel(String userId){
         try{
-            connectDB();
             loadData();
             String level = "select userLevel from users where userId = ?";
             PreparedStatement ps = con.prepareStatement(level);
@@ -228,7 +231,6 @@ public class Data {
 
     public static ResultSet getTopLevels(){
         try{
-            connectDB();
             loadData();
             String level = "select * from users order by userLevel desc, userExp desc limit 0,5";
             Statement s = con.createStatement();
@@ -243,7 +245,6 @@ public class Data {
 
     public static int getUserRank(String userId){
         try{
-            connectDB();
             loadData();
             int rank = 0;
             ArrayList<String> users = new ArrayList<String>();
@@ -267,9 +268,21 @@ public class Data {
         }
     }
 
+    public static void updateMCUserName(String mcUsername, String userId){
+        try {
+            String delete = "update users set mcUsername = ? where userId = ?";
+            PreparedStatement ps = con.prepareStatement(delete);
+            ps.setString(1, mcUsername);
+            ps.setString(2, userId);
+            ps.executeUpdate();
+            loadData();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void removeUserFromDB(String userId) {
         try {
-            connectDB();
             String delete = "delete from users where userId = ?";
             PreparedStatement ps = con.prepareStatement(delete);
             ps.setString(1, userId);

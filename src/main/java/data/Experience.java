@@ -1,17 +1,19 @@
 package data;
 
+import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 public class Experience {
 
-    public static void addExp(GuildMessageReceivedEvent e, double numExp, String userId, boolean useMultiplier){
-        String userName = e.getGuild().getMemberById(userId).getAsMention();
+    public static void addExp(GuildMessageReceivedEvent e, double numExp, Member member, boolean useMultiplier){
 
         double multiplier;
-        if(e.getGuild().getMemberById(userId).getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("nitroRoleId"))) && useMultiplier){
+        String userId = member.getId();
+
+        if(member.getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("nitroRoleId"))) && useMultiplier){
             multiplier = Double.parseDouble(Data.prop.getProperty("nitroExp"));
         }
-        else if(e.getGuild().getMemberById(userId).getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("subRoleId"))) && useMultiplier){
+        else if(member.getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("subRoleId"))) && useMultiplier){
             multiplier = Double.parseDouble(Data.prop.getProperty("subExp"));
         }
         else{
@@ -20,10 +22,12 @@ public class Experience {
 
         double expToAdd = numExp * multiplier;
         double totalExp = (Data.getUserExp(userId) + expToAdd);
-        if(totalExp >= Double.parseDouble(Data.prop.getProperty("levelExp"))){
-            while(totalExp >= Double.parseDouble(Data.prop.getProperty("levelExp"))){
-                totalExp -= Double.parseDouble(Data.prop.getProperty("levelExp"));
+        double levelExp = Double.parseDouble(Data.prop.getProperty("levelExp"));
+        if(totalExp >= levelExp){
+            while(totalExp >= levelExp){
+                totalExp -= levelExp;
                 Data.levelUpUser(userId);
+                String userName = member.getAsMention();
                 e.getChannel().sendMessage("> Congratulations, " + userName + " for reaching level " + Data.getUserLevel(userId) + "!").queue();
                 Data.setUserExp(userId, totalExp);
             }
@@ -34,7 +38,6 @@ public class Experience {
     }
 
     public static void addExp(GuildMessageReceivedEvent e, double numExp, boolean useMultiplier){
-        String userId = e.getMember().getUser().getId();
-        addExp(e, numExp, userId, useMultiplier);
+        addExp(e, numExp, e.getMember(), useMultiplier);
     }
 }

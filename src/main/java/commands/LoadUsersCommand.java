@@ -16,7 +16,6 @@ public class LoadUsersCommand {
             System.out.println("Loading Users - " + Data.userList.size());
             e.getChannel().sendMessage("> Loading users.").queue();
             boolean userFound = false;
-            int count = 1;
             for(Member m : members){
                 for(DBUser user : Data.userList){
                     if(user.getUserId().equalsIgnoreCase(m.getUser().getId())){
@@ -27,8 +26,6 @@ public class LoadUsersCommand {
                     System.out.println("Adding " + m.getUser().getId() + " - " + m.getUser().getName() + " to DB.");
                     Data.addUserToDB(m.getUser().getId(), m.getUser().getName());
                 }
-                System.out.print("\rUsers Processed: " + count);
-                count++;
                 userFound = false;
             }
             System.out.println("\nUsers Loaded - "+ Data.userList.size());

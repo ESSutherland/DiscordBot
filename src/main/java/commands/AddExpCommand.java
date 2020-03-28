@@ -2,6 +2,7 @@ package commands;
 
 import data.Experience;
 import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.internal.utils.PermissionUtil;
 
@@ -13,9 +14,10 @@ public class AddExpCommand {
             String userId;
             if(message.length > 2){
                 numExp = Integer.parseInt(message[1]);
-                userId = message[2];
+                Member m = e.getMessage().getMentionedMembers().get(0);
+                userId = m.getId();
                 e.getChannel().sendMessage("Added " + numExp + " experience to " + e.getGuild().getMemberById(userId).getAsMention() + ".").queue();
-                Experience.addExp(e,numExp, userId, false);
+                Experience.addExp(e,numExp, m, false);
             }
             else if(message.length > 1){
                 numExp = Integer.parseInt(message[1]);

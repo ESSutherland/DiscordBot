@@ -6,13 +6,17 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class UserJoin extends ListenerAdapter {
 
-    public void onGuildMemberJoin(GuildMemberJoinEvent ev){
-        String userId = ev.getMember().getUser().getId();
-        String userName = ev.getMember().getUser().getName();
+    public void onGuildMemberJoin(GuildMemberJoinEvent e){
+        String userId = e.getMember().getUser().getId();
+        String userName = e.getMember().getUser().getName();
 
-        ev.getGuild().addRoleToMember(ev.getMember(), ev.getGuild().getRoleById(Data.prop.getProperty("defaultRole"))).queue();
+        try{
+            e.getGuild().addRoleToMember(userId, e.getGuild().getRoleById(Data.prop.getProperty("defaultRole"))).queue();
+            Data.addUserToDB(userId, userName);
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
         System.out.println("Added default role to " + userName);
-
-        Data.addUserToDB(userId, userName);
     }
 }

@@ -35,6 +35,7 @@ public class LevelTopCommand {
                 eb.addField(userRank, "> Level: " + rs.getInt("userLevel") + " - Exp: " + rs.getDouble("userExp") + "/" + Data.prop.getProperty("levelExp"), false);
                 count++;
             }
+            eb.setFooter("Bot by SpiderPigEthan");
         }
         catch (Exception ex){
             ex.printStackTrace();
