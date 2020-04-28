@@ -7,39 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ada6424b-062e-4699-a1aa-1d436a223d8b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/commands/AllCommands.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/commands/PurgeCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/events/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules.db" beforeDir="false" afterPath="$PROJECT_DIR$/modules.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/AddExpCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/AddExpCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/ColorCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/ColorCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/Commands.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/LevelCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/LevelCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/LevelTopCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/LevelTopCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/ListModulesCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/ModulesCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/LoadUsersCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/LoadUsersCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/MCWhitelistCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/MCWhitelistCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/ModuleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/ModuleCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/Experience.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Experience.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/events/DeleteRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/events/DeleteRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/events/UserLeave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/events/UserLeave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/AddExpCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/AddExpCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/ColorReqCommand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/Commands.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/LevelCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/LevelCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/LevelTopCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/LevelTopCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/ListModulesCommand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/LoadUsersCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/LoadUsersCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/MCWhitelistCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/MCWhitelistCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/ModuleCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/ModuleCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/Data.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/Data.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/Experience.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/Experience.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/events/DeleteRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/events/DeleteRole.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/events/UserLeave.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/events/UserLeave.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-blank.properties" beforeDir="false" afterPath="$PROJECT_DIR$/config-blank.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585365405555</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="added custom commands/reactions and switched to mostly embeds">
+      <created>1588032583796</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1588032583796</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -265,7 +241,8 @@
     <MESSAGE value="added level commands/updated data" />
     <MESSAGE value="updated exp and data" />
     <MESSAGE value="added modules, minecraft whitelisting, and switched to sqlite" />
-    <option name="LAST_COMMIT_MESSAGE" value="added modules, minecraft whitelisting, and switched to sqlite" />
+    <MESSAGE value="added custom commands/reactions and switched to mostly embeds" />
+    <option name="LAST_COMMIT_MESSAGE" value="added custom commands/reactions and switched to mostly embeds" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="179" key="#Project_Structure" timestamp="1585079040723">
@@ -292,10 +269,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581063409713" />
-    <state x="545" y="116" key="CommitChangelistDialog2" timestamp="1588032546209">
+    <state x="545" y="116" key="CommitChangelistDialog2" timestamp="1588032582664">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="545" y="116" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588032546209" />
+    <state x="545" y="116" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588032582664" />
     <state x="1173" y="240" key="FileChooserDialogImpl" timestamp="1584901754356">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -324,10 +301,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="591" y="92" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585079370222" />
-    <state x="552" y="254" key="Vcs.Push.Dialog.v2" timestamp="1585365409244">
+    <state x="552" y="254" key="Vcs.Push.Dialog.v2" timestamp="1588032587873">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="254" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585365409244" />
+    <state x="552" y="254" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588032587873" />
     <state x="661" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1582786239280">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
