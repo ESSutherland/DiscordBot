@@ -1,7 +1,10 @@
 package data;
 
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+
+import java.awt.*;
 
 public class Experience {
 
@@ -26,10 +29,25 @@ public class Experience {
         if(totalExp >= levelExp){
             while(totalExp >= levelExp){
                 totalExp -= levelExp;
-                Data.levelUpUser(userId);
-                String userName = member.getAsMention();
-                e.getChannel().sendMessage("> Congratulations, " + userName + " for reaching level " + Data.getUserLevel(userId) + "!").queue();
+                Data.setUserLevel(userId, Data.getUserLevel(userId) + 1);
+                buildEmbed(e, member);
                 Data.setUserExp(userId, totalExp);
+            }
+        }
+        else if(totalExp < 0){
+            while(totalExp < 0){
+                if(Data.getUserLevel(userId) == 1){
+                    totalExp += levelExp;
+                    if(totalExp > 0){
+                        Data.setUserExp(userId, 0);
+                    }
+                }
+                else{
+                    totalExp += levelExp;
+                    Data.setUserLevel(userId, Data.getUserLevel(userId) - 1);
+                    buildEmbed(e, member);
+                    Data.setUserExp(userId, totalExp);
+                }
             }
         }
         else{
@@ -39,5 +57,17 @@ public class Experience {
 
     public static void addExp(GuildMessageReceivedEvent e, double numExp, boolean useMultiplier){
         addExp(e, numExp, e.getMember(), useMultiplier);
+    }
+
+    private static void buildEmbed(GuildMessageReceivedEvent e, Member m){
+        String userId = m.getId();
+        String userName = m.getAsMention();
+
+        EmbedBuilder eb = new EmbedBuilder();
+        eb.setTitle("Level Up!");
+        eb.setColor(Color.CYAN);
+        eb.setDescription("Congratulations, " + userName + " for reaching level " + Data.getUserLevel(userId) + "!");
+        eb.setFooter("Bot by SpiderPigEthan");
+        e.getChannel().sendMessage(eb.build()).queue();
     }
 }

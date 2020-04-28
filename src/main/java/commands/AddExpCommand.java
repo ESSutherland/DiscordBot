@@ -1,10 +1,15 @@
 package commands;
 
+import data.CommandEmbed;
+import data.Data;
 import data.Experience;
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.internal.utils.PermissionUtil;
+
+import java.awt.*;
 
 public class AddExpCommand {
 
@@ -16,20 +21,20 @@ public class AddExpCommand {
                 numExp = Integer.parseInt(message[1]);
                 Member m = e.getMessage().getMentionedMembers().get(0);
                 userId = m.getId();
-                e.getChannel().sendMessage("Added " + numExp + " experience to " + e.getGuild().getMemberById(userId).getAsMention() + ".").queue();
+                CommandEmbed.successEB(e,"Added " + numExp + " experience to " + e.getGuild().getMemberById(userId).getAsMention() + ".");
                 Experience.addExp(e,numExp, m, false);
             }
             else if(message.length > 1){
                 numExp = Integer.parseInt(message[1]);
-                e.getChannel().sendMessage("Added " + numExp + " experience to " + e.getMember().getAsMention() + ".").queue();
+                CommandEmbed.successEB(e,"Added " + numExp + " experience to " + e.getMember().getAsMention() + ".");
                 Experience.addExp(e, numExp, false);
             }
             else{
-                e.getChannel().sendMessage("> Please enter parameters.");
+                CommandEmbed.errorEB(e, "Please use correct parameters ({}=required, []=optional): !addexp {amount} [user]");
             }
         }
         else{
-            e.getChannel().sendMessage("> You do not have permission for this command");
+            CommandEmbed.errorEB(e," You do not have permission for this command");
         }
     }
 }

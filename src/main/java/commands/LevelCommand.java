@@ -10,22 +10,31 @@ import java.awt.*;
 public class LevelCommand {
 
     public static void command(GuildMessageReceivedEvent e, String message[]){
-        int level;
-        double exp;
-        int userRank;
+
         Member member;
         String userId;
         String userName;
         if (message.length > 1 && e.getMessage().getMentionedMembers().size() > 0) {
-            member = e.getMessage().getMentionedMembers().get(0);
-            userId = member.getId();
-            userName = member.getUser().getName();
+            for(Member m: e.getMessage().getMentionedMembers()) {
+                userId = m.getId();
+                userName = m.getUser().getName();
+                buildEB(userName, userId, m, e);
+            }
         }
         else{
             userId = e.getMember().getUser().getId();
             userName = e.getMember().getUser().getName();
             member = e.getMember();
+            buildEB(userName, userId, member, e);
         }
+
+    }
+
+    private static void buildEB(String userName, String userId, Member member, GuildMessageReceivedEvent e){
+        int level;
+        double exp;
+        int userRank;
+
         level = Data.getUserLevel(userId);
         exp = Data.getUserExp(userId);
         userRank = Data.getUserRank(userId);
@@ -37,16 +46,15 @@ public class LevelCommand {
         eb.setAuthor(userName, null, member.getUser().getAvatarUrl());
         eb.addField("Level", "" + Data.getUserLevel(userId), true);
         eb.addBlankField(true);
-        eb.setThumbnail("https://cdn.discordapp.com/attachments/673722670294237187/675895981560168484/UwU_112.png");
+        eb.setThumbnail(Data.prop.getProperty("levelImg"));
         eb.addField("Exp to level " + (level + 1), exp + "/" + levelExp, true);
         eb.setFooter("Bot by SpiderPigEthan");
         if(member.getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("nitroRoleId")))){
-            eb.setDescription("Multiplier: " + e.getGuild().getRoleById(Data.prop.getProperty("nitroRoleId")).getName() + "(x" + Data.prop.getProperty("nitroExp") + ")");
+            eb.setDescription("Multiplier: **" + e.getGuild().getRoleById(Data.prop.getProperty("nitroRoleId")).getName() + "(x" + Data.prop.getProperty("nitroExp") + ")**");
         }
         else if(member.getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("subRoleId")))){
-            eb.setDescription("Multiplier: " + e.getGuild().getRoleById(Data.prop.getProperty("subRoleId")).getName() + "(x" + Data.prop.getProperty("subExp") + ")");
+            eb.setDescription("Multiplier: **" + e.getGuild().getRoleById(Data.prop.getProperty("subRoleId")).getName() + "(x" + Data.prop.getProperty("subExp") + ")**");
         }
-
         e.getChannel().sendMessage(eb.build()).queue();
     }
 }

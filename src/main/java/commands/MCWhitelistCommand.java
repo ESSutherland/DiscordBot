@@ -1,5 +1,6 @@
 package commands;
 
+import data.CommandEmbed;
 import data.Data;
 import io.graversen.minecraft.rcon.MinecraftRcon;
 import io.graversen.minecraft.rcon.commands.WhiteListCommand;
@@ -12,6 +13,8 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import org.shanerx.mojang.Mojang;
 
 import java.time.Duration;
+import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
 
 public class MCWhitelistCommand {
     static MinecraftRcon minecraftRcon;
@@ -19,7 +22,7 @@ public class MCWhitelistCommand {
     static Mojang api = new Mojang().connect();
     public static void connect(){
         minecraftRconService = new MinecraftRconService(new RconDetails(Data.prop.getProperty("minecraftRconIP"), Integer.parseInt(Data.prop.getProperty("minecraftRconPort")), Data.prop.getProperty("minecraftRconPass")),
-                ConnectOptions.neverStopTrying());
+                ConnectOptions.defaults());
         minecraftRconService.connectBlocking(Duration.ofSeconds(5));
         minecraftRcon = minecraftRconService.minecraftRcon().get();
     }
@@ -27,46 +30,50 @@ public class MCWhitelistCommand {
     public static void command(GuildMessageReceivedEvent e, String[] message){
         if(api.getStatus(Mojang.ServiceType.AUTHSERVER_MOJANG_COM) != Mojang.ServiceStatus.GREEN){
             System.err.println("The Auth Server is not available right now.");
-            e.getChannel().sendMessage("> Mojang Auth Server Not Avaliable.").queue();
+            CommandEmbed.errorEB(e, "> Mojang Auth Server Not Avaliable.");
         }
         else{
-            if(e.getMember().getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("subRoleId")))){
-                final WhiteListCommand whitelist;
-                String mcUsername = "";
-                String userId = e.getMember().getUser().getId();
+            try {
+                if(e.getMember().getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("subRoleId"))) ||
+                        e.getMember().getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("modRoleId")))){
+                    final WhiteListCommand whitelist;
+                    String mcUsername = "";
+                    String userId = e.getMember().getUser().getId();
 
-                if(message.length < 2){
-                    e.getChannel().sendMessage("> Please include your Minecraft Username.").queue();
-                }
-                else {
-                    e.getChannel().sendMessage("> Getting info from Server.").queue();
-                    mcUsername = message[1];
+                    if(message.length < 2){
+                        CommandEmbed.errorEB(e, "Please use correct parameters ({}=required): !whitelist {username}");
+                    }
+                    else {
+                        e.getChannel().sendMessage("> Getting Info From Server, Please Wait...").queue(message1 -> message1.delete().queueAfter(5, TimeUnit.SECONDS));
+                        mcUsername = message[1];
 
-                    try{
-                        api.getUUIDOfUsername(mcUsername);
-                        connect();
-                        if(Data.findUserInDB(userId)){
-                            System.out.println("USER FOUND");
-                            if(Data.getDBUser(userId).getMcUsername() != null){
-                                unWhitelist(userId);
-                                e.getChannel().sendMessage("> Updated Whitelist for " + e.getMember().getAsMention() + ": " + mcUsername).queue();
+                        try {
+                            api.getUUIDOfUsername(mcUsername);
+                            connect();
+                            if (Data.findUserInDB(userId)) {
+                                System.out.println("USER FOUND");
+                                if (Data.getDBUser(userId).getMcUsername() != null) {
+                                    unWhitelist(userId);
+                                    CommandEmbed.successEB(e, "Updated Whitelist for " + e.getMember().getAsMention() + ": " + mcUsername);
+                                } else {
+                                    CommandEmbed.successEB(e, "Added Whitelist for " + e.getMember().getAsMention() + ": " + mcUsername);
+                                }
+                                Data.updateMCUserName(mcUsername, userId);
+                                whitelist = new WhiteListCommand(Target.player(mcUsername), WhiteListModes.ADD);
+                                minecraftRcon.sendSync(whitelist);
+                                disconnect();
                             }
-                            else{
-                                e.getChannel().sendMessage("> Added Whitelist for " + e.getMember().getAsMention() + ": " + mcUsername).queue();
-                            }
-                            Data.updateMCUserName(mcUsername, userId);
-                            whitelist = new WhiteListCommand(Target.player(mcUsername), WhiteListModes.ADD);
-                            minecraftRcon.sendSync(whitelist);
-                            disconnect();
+                        } catch (NullPointerException ex) {
+                            CommandEmbed.errorEB(e, "> " + mcUsername + " is not a valid Minecraft Account.");
                         }
                     }
-                    catch (NullPointerException ex){
-                        e.getChannel().sendMessage("> " + mcUsername + " is not a valid Minecraft Account.").queue();
-                    }
+                }
+                else{
+                    CommandEmbed.errorEB(e, "You must be a subscriber to whitelist an account.");
                 }
             }
-            else{
-                e.getChannel().sendMessage("> You must be a subscriber to whitelist an account.").queue();
+            catch (NoSuchElementException ex){
+                CommandEmbed.errorEB(e, "Server is offline.");
             }
         }
     }

@@ -8,7 +8,7 @@ import java.awt.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ListModulesCommand {
+public class ModulesCommand {
 
     public static void command(GuildMessageReceivedEvent e, String[] message) throws SQLException {
         ArrayList<String[]> modulesList  = Modules.getModules();

@@ -24,15 +24,16 @@ public class LevelTopCommand {
             String userRank = "";
             while(rs.next()){
                 switch (count){
-                    case 1: userRank = "**" + (count) + " - " + rs.getString("userName") + "**" + first;
+                    case 1: userRank = "**" + first;
                         break;
-                    case 2: userRank = "**" + (count) + " - " + rs.getString("userName") + "**" + second;
+                    case 2: userRank = "**" + second;
                         break;
-                    case 3: userRank = "**" + (count) + " - " + rs.getString("userName") + "**" + third;
+                    case 3: userRank = "**" + third;
                         break;
-                    default: userRank = "**" + (count) + " - " + rs.getString("userName") + "**";
+                    default: userRank = "**-" + (count) + "-";
                 }
-                eb.addField(userRank, "> Level: " + rs.getInt("userLevel") + " - Exp: " + rs.getDouble("userExp") + "/" + Data.prop.getProperty("levelExp"), false);
+                eb.addField("**--------------------------------------------------------------**",
+                        userRank + " " + e.getGuild().getMemberById(rs.getString("userId")).getAsMention() + " Level: " + rs.getInt("userLevel") + " - Exp: " + rs.getDouble("userExp") + "/" + Data.prop.getProperty("levelExp") + "**", false);
                 count++;
             }
             eb.setFooter("Bot by SpiderPigEthan");

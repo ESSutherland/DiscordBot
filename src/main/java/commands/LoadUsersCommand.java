@@ -1,5 +1,6 @@
 package commands;
 
+import data.CommandEmbed;
 import data.DBUser;
 import data.Data;
 import net.dv8tion.jda.api.Permission;
@@ -14,7 +15,7 @@ public class LoadUsersCommand {
         if(PermissionUtil.checkPermission(e.getMember(), Permission.ADMINISTRATOR)){
             List<Member> members = e.getGuild().getMembers();
             System.out.println("Loading Users - " + Data.userList.size());
-            e.getChannel().sendMessage("> Loading users.").queue();
+            CommandEmbed.successEB(e, "Loading users.");
             boolean userFound = false;
             for(Member m : members){
                 for(DBUser user : Data.userList){
@@ -28,11 +29,19 @@ public class LoadUsersCommand {
                 }
                 userFound = false;
             }
+
+            for(DBUser user : Data.userList){
+                if(!e.getGuild().getMembers().contains(e.getGuild().getMemberById(user.getUserId()))){
+                    System.out.println("Removing " + user.getUserName() + " from DB");
+                    Data.removeUserFromDB(user.getUserId());
+                }
+            }
+
             System.out.println("\nUsers Loaded - "+ Data.userList.size());
-            e.getChannel().sendMessage("> Users loaded.").queue();
+            CommandEmbed.successEB(e, "Users loaded.");
         }
         else{
-            e.getChannel().sendMessage("> You do not have permission for this command").queue();
+            CommandEmbed.errorEB(e, "You do not have permission for this command");
         }
     }
 }

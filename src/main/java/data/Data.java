@@ -192,12 +192,10 @@ public class Data {
         }
     }
 
-    public static void levelUpUser(String userId){
+    public static void setUserLevel(String userId, int newLevel){
         try {
             String update = "update users set userLevel = ? where userId = ?";
             PreparedStatement ps = con.prepareStatement(update);
-
-            int newLevel = getUserLevel(userId) + 1;
 
             ps.setInt(1, newLevel);
             ps.setString(2, userId);
@@ -234,8 +232,7 @@ public class Data {
             loadData();
             String level = "select * from users order by userLevel desc, userExp desc limit 0,5";
             Statement s = con.createStatement();
-            ResultSet rs = s.executeQuery(level);
-            return rs;
+            return s.executeQuery(level);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -247,7 +244,7 @@ public class Data {
         try{
             loadData();
             int rank = 0;
-            ArrayList<String> users = new ArrayList<String>();
+            ArrayList<String> users = new ArrayList<>();
             String level = "select * from users order by userLevel desc, userExp desc";
             Statement s = con.createStatement();
             ResultSet rs = s.executeQuery(level);
