@@ -6,9 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ada6424b-062e-4699-a1aa-1d436a223d8b" name="Default Changelist" comment="">
+    <list default="true" id="ada6424b-062e-4699-a1aa-1d436a223d8b" name="Default Changelist" comment="updated blank config">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-blank.properties" beforeDir="false" afterPath="$PROJECT_DIR$/config-blank.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +227,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588032583796</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="updated blank config">
+      <created>1588032810633</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1588032810633</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -242,7 +248,8 @@
     <MESSAGE value="updated exp and data" />
     <MESSAGE value="added modules, minecraft whitelisting, and switched to sqlite" />
     <MESSAGE value="added custom commands/reactions and switched to mostly embeds" />
-    <option name="LAST_COMMIT_MESSAGE" value="added custom commands/reactions and switched to mostly embeds" />
+    <MESSAGE value="updated blank config" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated blank config" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="179" key="#Project_Structure" timestamp="1585079040723">
@@ -269,10 +276,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581063409713" />
-    <state x="545" y="116" key="CommitChangelistDialog2" timestamp="1588032582664">
+    <state x="545" y="116" key="CommitChangelistDialog2" timestamp="1588033037410">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="545" y="116" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588032582664" />
+    <state x="545" y="116" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588033037410" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1588033127567">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588033127567" />
     <state x="1173" y="240" key="FileChooserDialogImpl" timestamp="1584901754356">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
