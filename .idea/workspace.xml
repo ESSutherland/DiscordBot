@@ -7,52 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ada6424b-062e-4699-a1aa-1d436a223d8b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/DiscordBot_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/DiscordBot_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config-blank.properties" beforeDir="false" afterPath="$PROJECT_DIR$/config-blank.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules.db" beforeDir="false" afterPath="$PROJECT_DIR$/modules.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/AddExpCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/AddExpCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/AllCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/AllCommands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/BotCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/BotCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/ColorCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/ColorCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/CommandCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/CommandCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/CommandsCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/CommandsCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/DeleteCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/DeleteCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/InfoCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/InfoCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/LevelCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/LevelCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/LevelTopCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/LevelTopCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/LoadUsersCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/LoadUsersCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/MCWhitelistCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/MCWhitelistCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/ModuleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/ModuleCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/ModulesCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/ModulesCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/CommandEmbed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/CommandEmbed.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/events/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/events/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/events/UserJoin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/events/UserJoin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/events/UserLeave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/events/UserLeave.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/AddExpCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/AddExpCommand.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/commands/AllCommands.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/AllCommands.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/BotCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/BotCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/ColorCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/ColorCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/CommandCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/CommandCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/CommandsCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/CommandsCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/DeleteCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/DeleteCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/InfoCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/InfoCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/LevelCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/LevelCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/LevelTopCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/LevelTopCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/LoadUsersCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/LoadUsersCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/MCWhitelistCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/MCWhitelistCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/ModuleCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/ModuleCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/ModulesCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/ModulesCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/CommandEmbed.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/CommandEmbed.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/Data.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/Data.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/events/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/events/Message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/events/UserJoin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/events/UserJoin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/events/UserLeave.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/events/UserLeave.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -286,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588033140259</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="updated commands">
+      <created>1588623215101</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1588623215101</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -311,7 +277,8 @@
     <MESSAGE value="added modules, minecraft whitelisting, and switched to sqlite" />
     <MESSAGE value="added custom commands/reactions and switched to mostly embeds" />
     <MESSAGE value="updated blank config" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated blank config" />
+    <MESSAGE value="updated commands" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated commands" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="179" key="#Project_Structure" timestamp="1585079040723">
@@ -338,10 +305,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581063409713" />
-    <state x="545" y="116" key="CommitChangelistDialog2" timestamp="1588033139691">
+    <state x="710" y="148" key="CommitChangelistDialog2" timestamp="1588623213909">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="545" y="116" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588033139691" />
+    <state x="710" y="148" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588623213909" />
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1588033127567">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -374,10 +341,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="591" y="92" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588572728225" />
-    <state x="552" y="254" key="Vcs.Push.Dialog.v2" timestamp="1588033143062">
+    <state x="552" y="254" key="Vcs.Push.Dialog.v2" timestamp="1588623219196">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="254" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588033143062" />
+    <state x="552" y="254" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588623219196" />
     <state x="661" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1582786239280">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
