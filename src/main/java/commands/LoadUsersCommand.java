@@ -36,7 +36,6 @@ public class LoadUsersCommand {
                     Data.removeUserFromDB(user.getUserId());
                 }
             }
-
             System.out.println("\nUsers Loaded - "+ Data.userList.size());
             CommandEmbed.successEB(e, "Users loaded.");
         }

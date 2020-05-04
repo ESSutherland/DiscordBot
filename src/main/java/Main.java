@@ -1,7 +1,5 @@
-import data.CommandData;
+import data.*;
 import events.*;
-import data.Data;
-import data.Modules;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
@@ -16,14 +14,20 @@ public class Main {
         Modules.connectDB();
         CommandData.connectDB();
         Data.loadData();
+        AnimalCrossingAPI.connect();
 
         JDA jda = JDABuilder.createDefault(Data.prop.getProperty("token"), EnumSet.allOf(GatewayIntent.class))
                 .setMemberCachePolicy(MemberCachePolicy.ALL)
-                .setActivity(Activity.playing(Data.prop.getProperty("playingStatus"))).build();
+                .setActivity(Activity.playing(Data.prop.getProperty("playingStatus") + " | " + Data.PREFIX + "help")).build();
         jda.addEventListener(new UserJoin());
         jda.addEventListener(new UserLeave());
         jda.addEventListener(new Message());
         jda.addEventListener(new DeleteRole());
         jda.addEventListener(new AddRole());
+
+        jda.awaitReady();
+
+        TwitchApi api = new TwitchApi();
+        api.registerFeatures(jda);
     }
 }

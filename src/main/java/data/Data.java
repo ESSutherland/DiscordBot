@@ -1,5 +1,6 @@
 package data;
 
+import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -7,7 +8,9 @@ import java.sql.*;
 
 public class Data {
 
-    public static String PREFIX = "!";
+    public static String PREFIX;
+
+    public static Color botColor;
 
     public static Properties prop = new Properties();
 
@@ -33,6 +36,8 @@ public class Data {
             s.execute(sql);
             FileInputStream ip = new FileInputStream("config.properties");
             prop.load(ip);
+            PREFIX = prop.getProperty("commandPrefix");
+            botColor = Color.decode(prop.getProperty("botColor"));
         } catch (Exception e) {
             e.printStackTrace();
         }

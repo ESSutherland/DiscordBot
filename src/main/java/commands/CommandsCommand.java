@@ -2,6 +2,7 @@ package commands;
 
 import data.CommandData;
 import data.CommandEmbed;
+import data.Data;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
@@ -17,7 +18,7 @@ public class CommandsCommand {
         if(commandList.size() > 0){
             String list = "```\n";
             EmbedBuilder eb = new EmbedBuilder();
-            eb.setColor(Color.CYAN);
+            eb.setColor(Data.botColor);
             eb.setTitle("Custom Commands");
 
             for(String[] s: commandList){

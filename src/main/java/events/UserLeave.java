@@ -17,7 +17,7 @@ public class UserLeave extends ListenerAdapter {
         String userName = ev.getUser().getName();
         System.out.println("User " + userName + " has left the server");
         DBUser user = Data.getDBUser(userId);
-        ev.getGuild().getTextChannelById(Data.prop.getProperty("adminChannel")).sendMessage(ev.getUser().getName() + " has left the server.").queue();
+        //ev.getGuild().getTextChannelById(Data.prop.getProperty("adminChannel")).sendMessage(ev.getUser().getName() + " has left the server.").queue();
         
         if(user.getRoleId() != null){
             ev.getGuild().getRoleById(user.getRoleId()).delete().queue();

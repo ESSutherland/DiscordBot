@@ -2,6 +2,7 @@ package commands;
 
 import data.CommandData;
 import data.CommandEmbed;
+import data.Data;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
@@ -12,7 +13,7 @@ public class CommandCommand {
 
     public static void command(GuildMessageReceivedEvent e, String[] message){
             if (message.length < 3) {
-                CommandEmbed.errorEB(e, "Please use correct format: !command <command> <message>");
+                CommandEmbed.errorEB(e, "Please use correct format: " + Data.PREFIX + "command <command> <message>");
             } else {
                 String command = message[1];
                 String commandMessage = "";

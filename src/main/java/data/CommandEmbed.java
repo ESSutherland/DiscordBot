@@ -9,7 +9,7 @@ public class CommandEmbed {
 
     public static void successEB(GuildMessageReceivedEvent e, String text){
         EmbedBuilder eb = new EmbedBuilder();
-        eb.setColor(Color.CYAN);
+        eb.setColor(Data.botColor);
         eb.addField("Success!", text, true);
         eb.addBlankField(true);
         eb.setFooter("Bot by SpiderPigEthan");

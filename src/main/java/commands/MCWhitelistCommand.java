@@ -41,7 +41,7 @@ public class MCWhitelistCommand {
                     String userId = e.getMember().getUser().getId();
 
                     if(message.length < 2){
-                        CommandEmbed.errorEB(e, "Please use correct parameters ({}=required): !whitelist {username}");
+                        CommandEmbed.errorEB(e, "Please use correct parameters ({}=required): " + Data.PREFIX + "whitelist {username}");
                     }
                     else {
                         e.getChannel().sendMessage("> Getting Info From Server, Please Wait...").queue(message1 -> message1.delete().queueAfter(5, TimeUnit.SECONDS));

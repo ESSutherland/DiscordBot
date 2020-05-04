@@ -1,6 +1,7 @@
 package events;
 
 import data.Data;
+import data.Modules;
 import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
@@ -11,8 +12,14 @@ public class UserJoin extends ListenerAdapter {
         String userName = e.getMember().getUser().getName();
 
         try{
-            e.getGuild().addRoleToMember(userId, e.getGuild().getRoleById(Data.prop.getProperty("defaultRole"))).queue();
-            Data.addUserToDB(userId, userName);
+            if(Modules.isModuleEnabled("agree")){
+                e.getGuild().addRoleToMember(userId, e.getGuild().getRoleById(Data.prop.getProperty("defaultRoleId"))).queue();
+                Data.addUserToDB(userId, userName);
+            }
+            else{
+                e.getGuild().addRoleToMember(userId, e.getGuild().getRoleById(Data.prop.getProperty("userRoleId"))).queue();
+                Data.addUserToDB(userId, userName);
+            }
         }
         catch (Exception ex){
             ex.printStackTrace();

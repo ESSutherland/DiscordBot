@@ -17,7 +17,7 @@ public class LevelTopCommand {
         String third = ":third_place:";
 
         EmbedBuilder eb = new EmbedBuilder();
-        eb.setColor(Color.CYAN);
+        eb.setColor(Data.botColor);
         eb.setTitle("Top 5 Levels");
         int count = 1;
         try{

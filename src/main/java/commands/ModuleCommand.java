@@ -1,6 +1,7 @@
 package commands;
 
 import data.CommandEmbed;
+import data.Data;
 import data.Modules;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
@@ -42,7 +43,7 @@ public class ModuleCommand {
                     }
                 }
                 else{
-                    CommandEmbed.errorEB(e, "Please use correct parameters ({}=required): !module {name} {enable/disable}");
+                    CommandEmbed.errorEB(e, "Please use correct parameters ({}=required): " + Data.PREFIX + "module {name} {enable/disable}");
                 }
             }
             else{

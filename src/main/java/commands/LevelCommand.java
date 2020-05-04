@@ -5,8 +5,6 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
-import java.awt.*;
-
 public class LevelCommand {
 
     public static void command(GuildMessageReceivedEvent e, String message[]){
@@ -41,7 +39,7 @@ public class LevelCommand {
         String levelExp = Data.prop.getProperty("levelExp");
 
         EmbedBuilder eb = new EmbedBuilder();
-        eb.setColor(Color.CYAN);
+        eb.setColor(Data.botColor);
         eb.setTitle("Rank: #" + userRank);
         eb.setAuthor(userName, null, member.getUser().getAvatarUrl());
         eb.addField("Level", "" + Data.getUserLevel(userId), true);

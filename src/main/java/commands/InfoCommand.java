@@ -32,7 +32,7 @@ public class InfoCommand {
         String format = "E, MMM d, yyyy hh:mm a";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
         eb.setColor(member.getColor());
-        eb.setAuthor(userName, null, member.getUser().getAvatarUrl());
+        eb.setAuthor(member.getUser().getAsTag(), null, member.getUser().getAvatarUrl());
         eb.setDescription(member.getAsMention());
         eb.addField("Joined", member.getTimeJoined().format(formatter), true);
         eb.addBlankField(true);
@@ -47,7 +47,7 @@ public class InfoCommand {
 
         String perms = "";
         for(Permission r: member.getPermissions()){
-            if(!e.getGuild().getRoleById(Data.prop.getProperty("defaultRole")).getPermissions().contains(r)){
+            if(!e.getGuild().getRoleById(Data.prop.getProperty("userRoleId")).getPermissions().contains(r)){
                 perms += r.getName() + ", ";
             }
         }

@@ -22,7 +22,7 @@ public class ColorCommand {
         }
         else{
             if(message.length < 2){
-                CommandEmbed.errorEB(e, "Please use correct parameters ({}=required) !color/colour {hex}");
+                CommandEmbed.errorEB(e, "Please use correct parameters ({}=required) " + Data.PREFIX + "color/colour {hex}");
             }
             else{
                 colorHex = message[1];
@@ -43,8 +43,7 @@ public class ColorCommand {
                             System.out.println("Role Found");
                             e.getGuild().getRoleById(roleId).getManager().setName(userName).setColor(color).queue();
                             Data.updateUserColorInDB(userId, userName, roleId, colorHex);
-
-                            CommandEmbed.successEB(e, "Updated color for user: " + e.getMember().getAsMention() + ".", hex);
+                            CommandEmbed.successEB(e, "Updated color for " + e.getMember().getAsMention() + ": " + hex, hex);
                             System.out.println("Updated Role: " + roleId + " for User: " + userName + " (" + userId + ") - " + color.toString());
                         }
                         else{
@@ -54,7 +53,7 @@ public class ColorCommand {
                             e.getGuild().modifyRolePositions(false).selectPosition(r).moveTo(Integer.parseInt(Data.prop.getProperty("rolePosition"))).queue();
                             e.getGuild().addRoleToMember(e.getMember(), r).queue();
                             Data.updateUserColorInDB(userId, userName, roleId, colorHex);
-                            CommandEmbed.successEB(e, "Created color for user: " + e.getMember().getAsMention() + ".",  hex);
+                            CommandEmbed.successEB(e, "Created color for " + e.getMember().getAsMention() + ": " + hex,  hex);
                             System.out.println("Created Role: " + roleId + " for User: " + userName + " (" + userId + ") - " + color.toString());
                         }
                     }
