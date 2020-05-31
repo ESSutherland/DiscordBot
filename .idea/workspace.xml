@@ -7,12 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ada6424b-062e-4699-a1aa-1d436a223d8b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/commands/WikiCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/DiscordBot_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/DiscordBot_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules.db" beforeDir="false" afterPath="$PROJECT_DIR$/modules.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/commands/AgreeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/AgreeCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/commands/AllCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/AllCommands.java" afterDir="false" />
@@ -33,7 +28,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/events/LiveAnnouncement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/events/LiveAnnouncement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/events/UserJoin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/events/UserJoin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/events/UserLeave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/events/UserLeave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/commands/AgreeCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/AgreeCommand.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/commands/AllCommands.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/AllCommands.class" afterDir="false" />
@@ -47,6 +41,7 @@
       <change beforePath="$PROJECT_DIR$/target/classes/commands/VillagerCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commands/VillagerCommand.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/data/CommandData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/CommandData.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/data/CommandEmbed.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/CommandEmbed.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/Data.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/Data.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/data/Modules.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/Modules.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/data/TwitchApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/TwitchApi.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/events/AddRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/events/AddRole.class" afterDir="false" />
@@ -305,7 +300,21 @@
       <option name="project" value="LOCAL" />
       <updated>1588623310033</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="added movie night command">
+      <created>1590890483813</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1590890483813</updated>
+    </task>
+    <task id="LOCAL-00027" summary="added wiki command">
+      <created>1590890576849</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1590890576849</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -332,7 +341,9 @@
     <MESSAGE value="updated blank config" />
     <MESSAGE value="updated commands" />
     <MESSAGE value="added new commands" />
-    <option name="LAST_COMMIT_MESSAGE" value="added new commands" />
+    <MESSAGE value="added movie night command" />
+    <MESSAGE value="added wiki command" />
+    <option name="LAST_COMMIT_MESSAGE" value="added wiki command" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="179" key="#Project_Structure" timestamp="1589484244061">
@@ -351,10 +362,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="304" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589484400479" />
-    <state x="710" y="148" key="CommitChangelistDialog2" timestamp="1588623309043">
+    <state x="710" y="148" key="CommitChangelistDialog2" timestamp="1590890576035">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="710" y="148" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588623309043" />
+    <state x="710" y="148" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590890576035" />
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1588033127567">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -399,10 +410,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="591" y="92" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589931798030" />
-    <state x="552" y="254" key="Vcs.Push.Dialog.v2" timestamp="1588623313303">
+    <state x="552" y="254" key="Vcs.Push.Dialog.v2" timestamp="1590890580155">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="254" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588623313303" />
+    <state x="552" y="254" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590890580155" />
     <state x="661" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1582786239280">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

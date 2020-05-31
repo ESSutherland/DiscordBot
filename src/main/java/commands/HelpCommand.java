@@ -17,7 +17,7 @@ public class HelpCommand {
 
         String commands ="";
 
-        commands += "__**General Commands**__\n" +
+        commands += "__General Commands__\n" +
                 "**" + Data.PREFIX + "bot**: " +
                 "*Get information about the bot.*\n" +
                 "**" + Data.PREFIX + "help**: " +
@@ -27,56 +27,58 @@ public class HelpCommand {
 
         if(e.getMember().getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("modRoleId")))
         || PermissionUtil.checkPermission(e.getMember(), Permission.ADMINISTRATOR)){
-            commands += "__**Moderator Commands**__\n" +
+            commands += "__Moderator Commands__\n" +
                     "**" + Data.PREFIX + "purge {amount} [@user]** - ({}=required, []=optional): " +
-                    "*Purge a specified number of message by the user or tagged user out of the last 100 total messages.*\n" +
+                    "*Purge a specified number of message by the user or tagged user out of the last 100 messages.*\n" +
                     "**" + Data.PREFIX + "stop**: " +
                     "*Shut down the bot (Please try not to use this).*\n" +
                     "**" + Data.PREFIX + "module {name} {enable/disable}** - ({}=required): " +
                     "*Enable or disable feature modules in the bot.*\n" +
                     "**" + Data.PREFIX + "modules**: " +
-                    "*List all modules and their status.*\n" +
-                    "**" + Data.PREFIX + "loadusers**: " +
-                    "*Manually update the database for the bot (Mostly in case of bot outages).*\n\n";
+                    "*List all modules and their status.*\n\n";
         }
 
         if(Modules.isModuleEnabled("colors")){
-            commands += "__**Color Commands**__\n" +
+            commands += "__Color Commands__\n" +
                     "**" + Data.PREFIX + "color/colour {hex}** - ({}=required): " +
                     "*Allows Nitro Boosters to change the color of their name in the server.*\n\n";
         }
 
         if(Modules.isModuleEnabled("levels")){
-            commands += "__**Level Commands**__\n" +
+            commands += "__Level Commands__\n" +
                     "**" + Data.PREFIX + "level [@user]** - ([]=optional): " +
                     "*Displays the current level of the user or mentioned user(s).*\n" +
                     "**" + Data.PREFIX + "leveltop**: " +
                     "*Displays the top 5 users with the highest level.*\n" +
                     "**" + Data.PREFIX + "addexp {amount} [@user]** - ({}=required, []=optional): " +
-                    "*Adds the specified amount of experience to the user or mentioned user. (MODERATORS ONLY)*\n\n";
+                    "*Adds the specified amount of experience to the user or mentioned user. (MOD ONLY)*\n\n";
         }
 
         if(Modules.isModuleEnabled("minecraft")){
-            commands += "__**Minecraft Commands**__\n" +
+            commands += "__Minecraft Commands__\n" +
                     "**" + Data.PREFIX + "whitelist {username}** - ({}=required): " +
-                    "*Allows users to whitelist themselves on the linked Minecraft server.*\n\n";
+                    "*Allows users to whitelist on the linked Minecraft server.*\n\n";
         }
 
         if(Modules.isModuleEnabled("custom_commands")){
-            commands += "__**Custom Commands**__\n" +
+            commands += "__Custom Commands__\n" +
                     "**" + Data.PREFIX + "commands**: " +
                     "*Shows list of the custom commands on the server*\n" +
-                    "**" + Data.PREFIX + "command {command} {response}** - ({}=required): " +
-                    "*Create a custom command to use in the server, use '{user}' in the response to ping the user. (MODERATORS ONLY)*\n" +
+                    "**" + Data.PREFIX + "command {permission flag} {command} {response}** - ({}=required): " +
+                    "*Create a custom command to use in the server. flags: -a = everyone, -b = boosters, -s = subs, @ a user for a private command. (MOD ONLY)*\n" +
                     "**" + Data.PREFIX + "delete {command}** - ({}=required): " +
-                    "*Delete a custom command from the server. (MODERATORS ONLY)*\n\n";
+                    "*Delete a custom command from the server. (MOD ONLY)*\n\n";
         }
 
         if(Modules.isModuleEnabled("animal_crossing")){
-            commands += "__**Animal Crossing Commands**__\n" +
+            commands += "__Animal Crossing Commands__\n" +
                     "**" + Data.PREFIX + "villager {name}** - ({}=required): " +
                     "*Get information about the specified Animal Crossing: New Horizons villager.*\n\n";
         }
+
+        commands += "__Other Commands__\n" +
+                "**" + Data.PREFIX + "wiki {search parameters}** - ({}=required): " +
+                "*Get an article from the NoPixel Wiki about the specified parameters (Based on search results, so might not return the expected result).*\n\n";
 
         try{
             user.openPrivateChannel().complete().sendMessage(commands).complete();

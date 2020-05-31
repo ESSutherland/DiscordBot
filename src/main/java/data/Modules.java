@@ -63,7 +63,7 @@ public class Modules {
         ResultSet rs = s.executeQuery(search);
 
         while(rs.next()){
-            String[] arr = {rs.getString("name"), rs.getInt("enabled")+""};
+            String[] arr = {rs.getString("name"), rs.getInt("enabled")+"", rs.getString("description")};
             results.add(arr);
         }
 

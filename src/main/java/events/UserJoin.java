@@ -11,19 +11,19 @@ public class UserJoin extends ListenerAdapter {
         String userId = e.getMember().getUser().getId();
         String userName = e.getMember().getUser().getName();
 
+        System.out.println(userName + " joined the server.");
+
         try{
             if(Modules.isModuleEnabled("agree")){
                 e.getGuild().addRoleToMember(userId, e.getGuild().getRoleById(Data.prop.getProperty("defaultRoleId"))).queue();
-                Data.addUserToDB(userId, userName);
             }
             else{
                 e.getGuild().addRoleToMember(userId, e.getGuild().getRoleById(Data.prop.getProperty("userRoleId"))).queue();
-                Data.addUserToDB(userId, userName);
             }
+            Data.addUserToDB(userId, userName);
         }
         catch (Exception ex){
             ex.printStackTrace();
         }
-        System.out.println("Added default role to " + userName);
     }
 }

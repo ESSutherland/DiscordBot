@@ -1,3 +1,4 @@
+import commands.LoadUsersCommand;
 import data.*;
 import events.*;
 import net.dv8tion.jda.api.JDA;
@@ -7,6 +8,7 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
 
 import java.util.EnumSet;
+
 
 public class Main {
     public static void main(String args[]) throws Exception{
@@ -24,10 +26,14 @@ public class Main {
         jda.addEventListener(new Message());
         jda.addEventListener(new DeleteRole());
         jda.addEventListener(new AddRole());
+        jda.addEventListener(new MessageReactionAdd());
+        jda.addEventListener(new MessageReactionRemove());
 
         jda.awaitReady();
 
         TwitchApi api = new TwitchApi();
         api.registerFeatures(jda);
+
+        LoadUsersCommand.startup(jda);
     }
 }

@@ -10,6 +10,8 @@ public class Data {
 
     public static String PREFIX;
 
+    public static String propFile = "config.properties";
+
     public static Color botColor;
 
     public static Properties prop = new Properties();
@@ -34,7 +36,7 @@ public class Data {
             con = DriverManager.getConnection(url);
             Statement s = con.createStatement();
             s.execute(sql);
-            FileInputStream ip = new FileInputStream("config.properties");
+            FileInputStream ip = new FileInputStream(propFile);
             prop.load(ip);
             PREFIX = prop.getProperty("commandPrefix");
             botColor = Color.decode(prop.getProperty("botColor"));

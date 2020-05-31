@@ -8,7 +8,9 @@ import net.dv8tion.jda.api.entities.MessageHistory;
 import net.dv8tion.jda.api.events.guild.member.GuildMemberRemoveEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class UserLeave extends ListenerAdapter {
@@ -17,7 +19,10 @@ public class UserLeave extends ListenerAdapter {
         String userName = ev.getUser().getName();
         System.out.println("User " + userName + " has left the server");
         DBUser user = Data.getDBUser(userId);
-        //ev.getGuild().getTextChannelById(Data.prop.getProperty("adminChannel")).sendMessage(ev.getUser().getName() + " has left the server.").queue();
+
+        if(Data.prop.getProperty("adminChannelId").length() > 0){
+            ev.getGuild().getTextChannelById(Data.prop.getProperty("adminChannelId")).sendMessage(ev.getUser().getName() + " has left the server.").queue();
+        }
         
         if(user.getRoleId() != null){
             ev.getGuild().getRoleById(user.getRoleId()).delete().queue();
@@ -32,7 +37,7 @@ public class UserLeave extends ListenerAdapter {
         MessageHistory history = new MessageHistory(ev.getGuild().getTextChannelById(Data.prop.getProperty("joinChannelId")));
         List<Message> pastMessages = history.retrievePast(20).complete();
         for(Message m: pastMessages){
-            if(m.getAuthor().equals(ev.getUser())){
+            if(m.getAuthor().equals(ev.getUser()) && !m.getTimeCreated().plusWeeks(2).isBefore(OffsetDateTime.now())){
                 messages.add(m);
             }
         }

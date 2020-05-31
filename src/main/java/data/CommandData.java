@@ -12,7 +12,8 @@ public class CommandData {
             String url = "jdbc:sqlite:commands.db";
             String sql = "CREATE TABLE IF NOT EXISTS commands (\n"
                     + "    command text PRIMARY KEY,\n"
-                    + "    message text\n"
+                    + "    message text\n,"
+                    + "    level text\n"
                     + ");";
             Class.forName("org.sqlite.JDBC");
             con = DriverManager.getConnection(url);
@@ -23,11 +24,12 @@ public class CommandData {
         }
     }
 
-    public static void addCommand(String command, String message) throws SQLException{
-        String update = "insert into commands(command, message) values(?, ?)";
+    public static void addCommand(String command, String message, String level) throws SQLException{
+        String update = "insert into commands(command, message, level) values(?, ?, ?)";
         PreparedStatement ps = con.prepareStatement(update);
         ps.setString(1, command);
         ps.setString(2, message);
+        ps.setString(3, level);
         ps.executeUpdate();
     }
 
@@ -68,7 +70,7 @@ public class CommandData {
         ResultSet rs = s.executeQuery(search);
 
         while(rs.next()){
-            String[] arr = {rs.getString("command"), rs.getString("message")};
+            String[] arr = {rs.getString("command"), rs.getString("message"), rs.getString("level")};
             results.add(arr);
         }
         return results;
@@ -79,5 +81,17 @@ public class CommandData {
         PreparedStatement ps = con.prepareStatement(delete);
         ps.setString(1, command);
         ps.executeUpdate();
+    }
+
+    public static String getCommandUseLevel(String command) throws SQLException {
+        String search = "select level from commands where command = ?";
+        PreparedStatement ps = con.prepareStatement(search);
+        ps.setString(1, command);
+        ResultSet rs = ps.executeQuery();
+        String level = null;
+        while(rs.next()) {
+            level = rs.getString("level");
+        }
+        return level;
     }
 }

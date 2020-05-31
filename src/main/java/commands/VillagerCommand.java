@@ -30,7 +30,7 @@ public class VillagerCommand {
                 EmbedBuilder eb = new EmbedBuilder();
                 eb.setColor(Data.botColor);
                 eb.setAuthor(villager.getName(), null,  villager.getIcon());
-                eb.setTitle(villager.getName());
+                //eb.setTitle(villager.getName());
                 eb.setThumbnail(villager.getIcon());
                 eb.addField("Personality :smiley:", villager.getPersonality(), true);
                 eb.addBlankField(true);
@@ -39,6 +39,7 @@ public class VillagerCommand {
                 eb.addBlankField(true);
                 eb.addField("Gender :couple:", villager.getGender(), true);
                 eb.addField("Catchphrase :speech_balloon:", villager.getCatchphrase(), false);
+                eb.setImage("http://acnhapi.com/images/villagers/" + villager.getId());
                 eb.setFooter("Bot by SpiderPigEthan");
                 e.getChannel().sendMessage(eb.build()).queue();
             }

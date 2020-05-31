@@ -1,5 +1,6 @@
 package commands;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
 import commands.*;
 import data.CommandData;
 import data.Data;
@@ -18,7 +19,7 @@ public class AllCommands {
 
         String[] message = e.getMessage().getContentRaw().split( " ");
         String channel = e.getMessage().getChannel().getId();
-        String first = message[0];
+        String first = message[0].toLowerCase();
 
         UpdateCommand.command(e, message);
 
@@ -88,7 +89,25 @@ public class AllCommands {
                     if(commandMessage.contains(userParam)){
                         commandMessage = commandMessage.replace(userParam, e.getAuthor().getAsMention());
                     }
-                    e.getMessage().getChannel().sendMessage(commandMessage).queue();
+
+                    switch (CommandData.getCommandUseLevel(first)){
+                        case "-a": e.getMessage().getChannel().sendMessage(commandMessage).queue();
+                            break;
+                        case "-b": if(e.getMember().getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("nitroRoleId"))) || PermissionUtil.checkPermission(e.getMember(), Permission.ADMINISTRATOR)){
+                            e.getMessage().getChannel().sendMessage(commandMessage).queue();
+                        }
+                            break;
+                        case "-s": if(e.getMember().getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("subRoleId"))) || PermissionUtil.checkPermission(e.getMember(), Permission.ADMINISTRATOR)) {
+                            e.getMessage().getChannel().sendMessage(commandMessage).queue();
+                        }
+                        case "-m": if(e.getMember().getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("modRoleId"))) || PermissionUtil.checkPermission(e.getMember(), Permission.ADMINISTRATOR)) {
+                            e.getMessage().getChannel().sendMessage(commandMessage).queue();
+                        }
+                            break;
+                        default: if(e.getMember().getId().equalsIgnoreCase(CommandData.getCommandUseLevel(first)) || PermissionUtil.checkPermission(e.getMember(), Permission.ADMINISTRATOR)){
+                            e.getMessage().getChannel().sendMessage(commandMessage).queue();
+                        }
+                    }
                     command = true;
                 }
             }
@@ -105,6 +124,14 @@ public class AllCommands {
                 if(first.equalsIgnoreCase(Data.PREFIX + "agree")){
                     System.out.println(e.getAuthor().getName() + "- Executing Agree Command");
                     AgreeCommand.command(e, message);
+                    command = true;
+                }
+            }
+
+            if(Modules.isModuleEnabled("movie_night")){
+                if(first.equalsIgnoreCase(Data.PREFIX + "movienight") && PermissionUtil.checkPermission(e.getMember(), Permission.ADMINISTRATOR)){
+                    System.out.println(e.getAuthor().getName() + "- Executing Movie Night Command");
+                    MovieNightCommand.command(e, message);
                     command = true;
                 }
             }
@@ -164,7 +191,13 @@ public class AllCommands {
                 HelpCommand.command(e, message);
                 command = true;
             }
-        } catch (SQLException ex) {
+
+            if(first.equalsIgnoreCase(Data.PREFIX + "wiki")){
+                System.out.println(e.getAuthor().getName() + "- Executing Wiki Command");
+                WikiCommand.command(e, message);
+                command = true;
+            }
+        } catch (SQLException | UnirestException ex) {
             ex.printStackTrace();
         }
         return command;

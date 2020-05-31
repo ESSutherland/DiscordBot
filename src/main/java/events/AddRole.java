@@ -7,5 +7,7 @@ public class AddRole extends ListenerAdapter {
 
     public void onGuildMemberRoleAdd(GuildMemberRoleAddEvent e){
 
+        System.out.println(e.getMember().getUser().getName() + " gained role: " + e.getRoles().toString());
+
     }
 }

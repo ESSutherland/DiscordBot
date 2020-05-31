@@ -26,10 +26,14 @@ public class PurgeCommand {
 
                     ArrayList<Message> messages = new ArrayList<>();
                     MessageHistory history = new MessageHistory(e.getChannel());
-                    List<Message> pastMessages = history.retrievePast(num).complete();
+                    List<Message> pastMessages = history.retrievePast(100).complete();
                     for(Message m: pastMessages){
                         if(m.getAuthor().equals(e.getGuild().getMemberById(userId).getUser())){
                             messages.add(m);
+                        }
+
+                        if(messages.size() == num){
+                            break;
                         }
                     }
                     if(messages.size() > 1){
