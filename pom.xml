@@ -28,6 +28,16 @@
             <artifactId>java-mojang-api</artifactId>
             <version>97bc9add82</version>
         </dependency>
+        <dependency>
+            <groupId>com.mashape.unirest</groupId>
+            <artifactId>unirest-java</artifactId>
+            <version>1.4.9</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.twitch4j</groupId>
+            <artifactId>twitch4j</artifactId>
+            <version>1.0.0-alpha.24</version>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -43,6 +53,14 @@
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
+        </repository>
+        <repository>
+            <id>jcenter</id>
+            <url>https://jcenter.bintray.com/</url>
+        </repository>
+        <repository>
+            <id>jcenter-snapshot</id>
+            <url>https://oss.jfrog.org/artifactory/libs-release/</url>
         </repository>
     </repositories>
     <build>
