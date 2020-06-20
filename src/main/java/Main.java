@@ -28,6 +28,7 @@ public class Main {
         jda.addEventListener(new AddRole());
         jda.addEventListener(new MessageReactionAdd());
         jda.addEventListener(new MessageReactionRemove());
+        jda.addEventListener(new UserBan());
 
         jda.awaitReady();
 
