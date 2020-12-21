@@ -19,7 +19,7 @@ public class MovieNightCommand {
         eb.setDescription("React to this message with :movie_camera: to recieve the " + e.getGuild().getRoleById(Data.prop.getProperty("movieRoleId")).getAsMention() +
                 " role to be notified about Movie Night related messages!");
         eb.setColor(Data.botColor);
-        eb.setFooter("Bot by SpiderPigEthan");
+        eb.setFooter(Data.authorFooter);
 
         e.getChannel().sendMessage(eb.build()).complete();
 

@@ -12,6 +12,8 @@ public class Data {
 
     public static String propFile = "config.properties";
 
+    public static final String authorFooter = "Bot by SpiderPigEthan";
+
     public static Color botColor;
 
     public static Properties prop = new Properties();
@@ -31,6 +33,7 @@ public class Data {
                     + "    userLevel integer DEFAULT 1,\n"
                     + "    userExp double DEFAULT 0,\n"
                     + "    mcUsername text\n"
+                    //+ "    userPoints integer DEFAULT 500\n"
                     + ");";
             Class.forName("org.sqlite.JDBC");
             con = DriverManager.getConnection(url);
@@ -38,8 +41,9 @@ public class Data {
             s.execute(sql);
             FileInputStream ip = new FileInputStream(propFile);
             prop.load(ip);
+            ip.close();
             PREFIX = prop.getProperty("commandPrefix");
-            botColor = Color.decode(prop.getProperty("botColor"));
+            //botColor = Color.decode(prop.getProperty("botColor"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -53,7 +57,8 @@ public class Data {
             userList = new ArrayList<>();
             while(rs.next()){
                 userList.add(new DBUser(rs.getString("userID"), rs.getString("userName"),
-                        rs.getString("roleId"), rs.getString("colorHex"), rs.getInt("userLevel"), rs.getDouble("userExp"), rs.getString("mcUsername")));
+                        rs.getString("roleId"), rs.getString("colorHex"), rs.getInt("userLevel"),
+                        rs.getDouble("userExp"), rs.getString("mcUsername")/*, rs.getInt("userPoints")*/));
             }
         } catch (Exception e){
             e.printStackTrace();
@@ -271,6 +276,54 @@ public class Data {
             return 0;
         }
     }
+
+    /*public static int getUserPoints(String userId){
+        try{
+            loadData();
+            String points = "select userPoints from users where userId = ?";
+            PreparedStatement ps = con.prepareStatement(points);
+            ps.setString(1, userId);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                return rs.getInt("userPoints");
+            }
+            else{
+                return 0;
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public static void setUserPoints(String userId, int newPoints){
+        try {
+            String update = "update users set userPoints = ? where userId = ?";
+            PreparedStatement ps = con.prepareStatement(update);
+
+            ps.setInt(1, newPoints);
+            ps.setString(2, userId);
+
+            ps.executeUpdate();
+            loadData();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static ResultSet getTopPoints(){
+        try{
+            loadData();
+            String level = "select * from users order by userPoints desc limit 0,5";
+            Statement s = con.createStatement();
+            return s.executeQuery(level);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }*/
 
     public static void updateMCUserName(String mcUsername, String userId){
         try {

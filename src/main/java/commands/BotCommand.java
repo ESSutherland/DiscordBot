@@ -14,7 +14,7 @@ public class BotCommand {
         eb.setTitle("Bot Information");
         eb.setAuthor("SpiderPigEthan", null, e.getGuild().getMemberById("106882411781947392").getUser().getAvatarUrl());
         eb.setDescription("A custom bot created by SpiderPigEthan. Written in Java using Java Discord API.");
-        eb.setFooter("Bot by SpiderPigEthan");
+        eb.setFooter(Data.authorFooter);
         e.getChannel().sendMessage(eb.build()).queue();
     }
 }

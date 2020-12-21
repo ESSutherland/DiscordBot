@@ -6,8 +6,8 @@ import java.util.ArrayList;
 public class AnimalCrossingAPI {
     public static ArrayList<ACVillager> villagers = new ArrayList<>();
 
-    private static String url = "http://acnhapi.com/villagers/";
-    private static String url2 = "http://acnhapi.com/icons/villagers/";
+    private static String url = "http://acnhapi.com/v1/images/villagers/";
+    private static String url2 = "http://acnhapi.com/v1/icons/villagers/";
 
     public static Connection con;
 

@@ -1,10 +1,7 @@
 package events;
 
 import commands.AllCommands;
-import data.CommandData;
-import data.Data;
-import data.Experience;
-import data.Modules;
+import data.*;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.MessageType;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
@@ -26,8 +23,11 @@ public class Message extends ListenerAdapter {
             }
 
             try {
-                if(!e.getAuthor().isBot() && !command && Modules.isModuleEnabled("levels")) {
-                    Experience.addExp(e, 1, true);
+                if(!e.getAuthor().isBot() && !command) {
+                    if(Modules.isModuleEnabled("levels"))
+                        Experience.addExp(e, 1, true);
+                    /*if(Modules.isModuleEnabled("points"))
+                        Points.addPoints(e, 5);*/
                 }
             }
             catch (SQLException ex) {

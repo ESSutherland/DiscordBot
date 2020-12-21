@@ -46,7 +46,7 @@ public class LevelCommand {
         eb.addBlankField(true);
         eb.setThumbnail(Data.prop.getProperty("levelImg"));
         eb.addField("Exp to level " + (level + 1), exp + "/" + levelExp, true);
-        eb.setFooter("Bot by SpiderPigEthan");
+        eb.setFooter(Data.authorFooter);
         if(member.getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("nitroRoleId")))){
             eb.setDescription("Multiplier: **" + e.getGuild().getRoleById(Data.prop.getProperty("nitroRoleId")).getName() + "(x" + Data.prop.getProperty("nitroExp") + ")**");
         }

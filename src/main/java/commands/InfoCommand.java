@@ -57,7 +57,7 @@ public class InfoCommand {
         }
         eb.addField("ID", userId, true);
         eb.setThumbnail(member.getUser().getAvatarUrl());
-        eb.setFooter("Bot by SpiderPigEthan");
+        eb.setFooter(Data.authorFooter);
 
         e.getChannel().sendMessage(eb.build()).queue();
     }

@@ -8,8 +8,9 @@ public class DBUser {
     private int userLevel;
     private double userExp;
     private String mcUsername;
+    private int userPoints;
 
-    public DBUser(String userId, String userName, String roleId, String colorHex, int userLevel, double userExp, String mcUsername){
+    public DBUser(String userId, String userName, String roleId, String colorHex, int userLevel, double userExp, String mcUsername/*, int userPoints*/){
         this.userId = userId;
         this.userName = userName;
         this.roleId = roleId;
@@ -17,6 +18,7 @@ public class DBUser {
         this.userLevel = userLevel;
         this.userExp = userExp;
         this.mcUsername = mcUsername;
+        this.userPoints = userPoints;
     }
     public void setUserId(String userId){
         this.userId = userId;
@@ -67,4 +69,8 @@ public class DBUser {
     }
 
     public String getMcUsername() { return mcUsername; }
+
+    public void setUserPoints(int userPoints) {this.userPoints = userPoints; }
+
+    public int getUserPoints(){ return userPoints; }
 }

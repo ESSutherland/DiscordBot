@@ -1,23 +1,32 @@
 package commands;
 
-import data.DBUser;
+import data.CommandData;
+import data.CommandEmbed;
 import data.Data;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 public class UpdateCommand {
-
     public static void command(GuildMessageReceivedEvent e, String[] message){
-        String userId = e.getMember().getId();
-        String userName = e.getMember().getUser().getName();
+        if (message.length < 3) {
+            CommandEmbed.errorEB(e, "Please use correct parameters ({}=required): `" + Data.PREFIX + "update {command} {response}` ");
+        } else {
+            String command = message[1].toLowerCase();
+            String commandMessage = "";
+            for (int i = 2; i < message.length; i++) {
+                commandMessage += message[i] + " ";
+            }
 
-        if(Data.findUserInDB(userId)){
-            DBUser user = Data.getDBUser(userId);
-            if(user.getUserId().equalsIgnoreCase(userId) && !user.getUserName().equalsIgnoreCase(userName)){
-                Data.updateUserInDB(userId, userName);
-                System.out.println("Updating name for: " + user.getUserName() + " -> " + userName);
-                if(user.getRoleId() != null){
-                    e.getGuild().getRoleById(user.getRoleId()).getManager().setName(userName).queue();
+            try{
+                if(CommandData.isCommand(command)){
+                    CommandData.updateCommand(command, commandMessage);
+                    CommandEmbed.successEB(e, "Command `" + command + "` has been updated.");
                 }
+                else{
+                    CommandEmbed.errorEB(e, "Command `" + command + "` does not exist.");
+                }
+            }
+            catch (Exception ex){
+                CommandEmbed.errorEB(e, "Command `" + command + "` does not exist.");
             }
         }
     }

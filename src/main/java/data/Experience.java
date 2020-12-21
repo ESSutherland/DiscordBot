@@ -32,6 +32,14 @@ public class Experience {
                 Data.setUserLevel(userId, Data.getUserLevel(userId) + 1);
                 buildEmbed(e, member);
                 Data.setUserExp(userId, totalExp);
+                /*try{
+                    if(Modules.isModuleEnabled("points")){
+                        Points.addPoints(e, 500, member);
+                    }
+                }
+                catch (Exception ex){
+                    ex.printStackTrace();
+                }*/
             }
         }
         else if(totalExp < 0){
@@ -67,7 +75,7 @@ public class Experience {
         eb.setTitle("Level Up!");
         eb.setColor(Color.CYAN);
         eb.setDescription("Congratulations, " + userName + " for reaching level " + Data.getUserLevel(userId) + "!");
-        eb.setFooter("Bot by SpiderPigEthan");
-        e.getChannel().sendMessage(eb.build()).queue();
+        eb.setFooter(Data.authorFooter);
+        e.getGuild().getTextChannelById(Data.prop.getProperty("botChannelId")).sendMessage(eb.build()).queue();
     }
 }

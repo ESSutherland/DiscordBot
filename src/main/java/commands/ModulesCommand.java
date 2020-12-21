@@ -32,10 +32,10 @@ public class ModulesCommand {
 
 
             if(totalPages < page){
-                CommandEmbed.errorEB(e, "That page does not exist. Last page is " + totalPages + ".");
+                CommandEmbed.errorEB(e, "That page does not exist. Last page is `" + totalPages + "`.");
             }
             else if (page < 1){
-                CommandEmbed.errorEB(e, "That page does not exist. First page is 1.");
+                CommandEmbed.errorEB(e, "That page does not exist. First page is `1`.");
             }
             else{
                 EmbedBuilder eb = new EmbedBuilder();
@@ -81,12 +81,12 @@ public class ModulesCommand {
 
             eb.addField(s[0], enabled, false);
         }*/
-                eb.setFooter("Bot by SpiderPigEthan");
+                eb.setFooter(Data.authorFooter);
                 e.getChannel().sendMessage(eb.build()).queue();
             }
         }
         catch (NumberFormatException ex){
-            CommandEmbed.errorEB(e, "Please use correct format: " + Data.PREFIX + "modules {page number} - ({}=required).");
+            CommandEmbed.errorEB(e, "Please use correct parameters ({}=required): `" + Data.PREFIX + "modules {page number}`");
         }
     }
 }

@@ -94,4 +94,23 @@ public class CommandData {
         }
         return level;
     }
+
+    public static void updateCommand(String command, String message) {
+        try {
+            String search = "select * from commands where command = ?";
+            PreparedStatement ps = con.prepareStatement(search);
+            ps.setString(1, command);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                String update = "update commands set message = ? where command = ?";
+                ps = con.prepareStatement(update);
+                ps.setString(1, message);
+                ps.setString(2, command);
+                ps.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

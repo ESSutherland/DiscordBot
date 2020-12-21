@@ -12,12 +12,12 @@ import java.sql.SQLException;
 public class ModuleCommand {
     public static void command(GuildMessageReceivedEvent e, String[] message) throws SQLException {
         if(message.length < 3){
-            CommandEmbed.errorEB(e, "Please use correct parameters ({}=required): !module {name} {enable/disable}");
+            CommandEmbed.errorEB(e, "Please use correct parameters ({}=required): `" + Data.PREFIX + "module {name} {enable/disable}`");
         }
         else{
             String module = message[1];
             String enable = message[2];
-            String out = "Module " + module;
+            String out = "Module `" + module + "`";
 
             if(Modules.findModule(module)){
                 if(enable.equalsIgnoreCase("disable")){
@@ -43,7 +43,7 @@ public class ModuleCommand {
                     }
                 }
                 else{
-                    CommandEmbed.errorEB(e, "Please use correct parameters ({}=required): " + Data.PREFIX + "module {name} {enable/disable}");
+                    CommandEmbed.errorEB(e, "Please use correct parameters ({}=required): `" + Data.PREFIX + "module {name} {enable/disable}`");
                 }
             }
             else{

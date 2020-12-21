@@ -16,7 +16,7 @@ public class CommandEmbed {
         eb.setColor(Data.botColor);
         eb.addField("Success!", text, true);
         eb.addBlankField(true);
-        eb.setFooter("Bot by SpiderPigEthan");
+        eb.setFooter(Data.authorFooter);
 
         e.getChannel().sendMessage(eb.build()).queue();
     }
@@ -31,9 +31,9 @@ public class CommandEmbed {
 
         eb.setThumbnail("https://htmlcolors.com/color-image/" + calcHex + ".png");
 
-        eb.addField("Success!", text + "#" + calcHex, true);
+        eb.addField("Success!", text + "`#" + calcHex + "`", true);
         eb.addBlankField(true);
-        eb.setFooter("Bot by SpiderPigEthan");
+        eb.setFooter(Data.authorFooter);
 
         e.getChannel().sendMessage(eb.build()).queue();
     }
@@ -42,7 +42,7 @@ public class CommandEmbed {
         eb.setColor(Color.RED);
         eb.addField("Error!", text, true);
         eb.addBlankField(true);
-        eb.setFooter("Bot by SpiderPigEthan");
+        eb.setFooter(Data.authorFooter);
 
         e.getChannel().sendMessage(eb.build()).queue();
     }

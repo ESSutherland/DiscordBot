@@ -20,6 +20,7 @@ public class MCWhitelistCommand {
     static MinecraftRcon minecraftRcon;
     static MinecraftRconService minecraftRconService;
     static Mojang api = new Mojang().connect();
+    static String whitelistList = "";
     public static void connect(){
         minecraftRconService = new MinecraftRconService(new RconDetails(Data.prop.getProperty("minecraftRconIP"), Integer.parseInt(Data.prop.getProperty("minecraftRconPort")), Data.prop.getProperty("minecraftRconPass")),
                 ConnectOptions.defaults());
@@ -41,7 +42,7 @@ public class MCWhitelistCommand {
                     String userId = e.getMember().getUser().getId();
 
                     if(message.length < 2){
-                        CommandEmbed.errorEB(e, "Please use correct parameters ({}=required): " + Data.PREFIX + "whitelist {username}");
+                        CommandEmbed.errorEB(e, "Please use correct parameters ({}=required): `" + Data.PREFIX + "whitelist {username}`");
                     }
                     else {
                         e.getChannel().sendMessage("> Getting Info From Server, Please Wait...").queue(message1 -> message1.delete().queueAfter(5, TimeUnit.SECONDS));
@@ -50,13 +51,22 @@ public class MCWhitelistCommand {
                         try {
                             api.getUUIDOfUsername(mcUsername);
                             connect();
-                            if (Data.findUserInDB(userId)) {
+                            minecraftRcon.query(new WhiteListCommand(Target.player(mcUsername), WhiteListModes.LIST), rconResponse -> {
+                                whitelistList = rconResponse.getResponseString().toLowerCase();
+                                return null;
+                            });
+
+                            if(whitelistList.contains(mcUsername.toLowerCase())){
+                                CommandEmbed.errorEB(e, "`" + mcUsername + "` is already whitelisted on this server.");
+                                disconnect();
+                            }
+                            else if (Data.findUserInDB(userId)) {
                                 System.out.println("USER FOUND");
                                 if (Data.getDBUser(userId).getMcUsername() != null) {
                                     unWhitelist(userId);
-                                    CommandEmbed.successEB(e, "Updated Whitelist for " + e.getMember().getAsMention() + ": " + mcUsername);
+                                    CommandEmbed.successEB(e, "Updated Whitelist for " + e.getMember().getAsMention() + ": `" + mcUsername + "`");
                                 } else {
-                                    CommandEmbed.successEB(e, "Added Whitelist for " + e.getMember().getAsMention() + ": " + mcUsername);
+                                    CommandEmbed.successEB(e, "Added Whitelist for " + e.getMember().getAsMention() + ": `" + mcUsername + "`");
                                 }
                                 Data.updateMCUserName(mcUsername, userId);
                                 whitelist = new WhiteListCommand(Target.player(mcUsername), WhiteListModes.ADD);
@@ -64,7 +74,7 @@ public class MCWhitelistCommand {
                                 disconnect();
                             }
                         } catch (NullPointerException ex) {
-                            CommandEmbed.errorEB(e, "> " + mcUsername + " is not a valid Minecraft Account.");
+                            CommandEmbed.errorEB(e, "`" + mcUsername + "` is not a valid Minecraft Account.");
                         }
                     }
                 }

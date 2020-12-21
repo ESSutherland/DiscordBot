@@ -9,8 +9,9 @@ import net.dv8tion.jda.api.utils.MemberCachePolicy;
 
 import java.util.EnumSet;
 
-
 public class Main {
+    public static JDA jda;
+
     public static void main(String args[]) throws Exception{
         Data.connectDB();
         Modules.connectDB();
@@ -18,7 +19,7 @@ public class Main {
         Data.loadData();
         AnimalCrossingAPI.connect();
 
-        JDA jda = JDABuilder.createDefault(Data.prop.getProperty("token"), EnumSet.allOf(GatewayIntent.class))
+        jda = JDABuilder.createDefault(Data.prop.getProperty("token"), EnumSet.allOf(GatewayIntent.class))
                 .setMemberCachePolicy(MemberCachePolicy.ALL)
                 .setActivity(Activity.playing(Data.prop.getProperty("playingStatus") + " | " + Data.PREFIX + "help")).build();
         jda.addEventListener(new UserJoin());
@@ -31,6 +32,8 @@ public class Main {
         jda.addEventListener(new UserBan());
 
         jda.awaitReady();
+
+        Data.botColor = jda.getGuilds().get(0).getMember(jda.getSelfUser()).getColor();
 
         TwitchApi api = new TwitchApi();
         api.registerFeatures(jda);

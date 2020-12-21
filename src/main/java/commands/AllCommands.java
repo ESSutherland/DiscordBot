@@ -1,10 +1,9 @@
 package commands;
 
-import com.mashape.unirest.http.exceptions.UnirestException;
-import commands.*;
 import data.CommandData;
 import data.Data;
 import data.Modules;
+import events.UpdateUser;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.internal.utils.PermissionUtil;
@@ -21,7 +20,7 @@ public class AllCommands {
         String channel = e.getMessage().getChannel().getId();
         String first = message[0].toLowerCase();
 
-        UpdateCommand.command(e, message);
+        UpdateUser.update(e, message);
 
         try {
             if(Modules.isModuleEnabled("colors")){
@@ -82,6 +81,13 @@ public class AllCommands {
                     command = true;
                 }
 
+                if(first.equalsIgnoreCase(Data.PREFIX + "update") && (e.getMessage().getMember().getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("modRoleId")))
+                        || PermissionUtil.checkPermission(e.getMember(), Permission.ADMINISTRATOR))){
+                    System.out.println(e.getAuthor().getName() + "- Executing Update Command");
+                    UpdateCommand.command(e, message);
+                    command = true;
+                }
+
                 if(CommandData.isCommand(first) && !e.getAuthor().isBot()){
                     System.out.println(e.getAuthor().getName() + "- Executing Custom Command: " + first);
                     String commandMessage = CommandData.getMessage(first);
@@ -135,6 +141,38 @@ public class AllCommands {
                     command = true;
                 }
             }
+
+            if(first.equalsIgnoreCase(Data.PREFIX + "game") && PermissionUtil.checkPermission(e.getMember(), Permission.ADMINISTRATOR)){
+                System.out.println(e.getAuthor().getName() + "- Executing Game Command");
+                GameCommand.command(e, message);
+                command = true;
+            }
+
+            /*if(Modules.isModuleEnabled("points")){
+                if(first.equalsIgnoreCase(Data.PREFIX + "points")){
+                    System.out.println(e.getAuthor().getName() + "- Executing Points Command");
+                    PointsCommand.command(e, message);
+                    command = true;
+                }
+
+                if(first.equalsIgnoreCase(Data.PREFIX + "gamble")){
+                    System.out.println(e.getAuthor().getName() + "- Executing Gamble Command");
+                    GambleCommand.command(e, message);
+                    command = true;
+                }
+
+                if(first.equalsIgnoreCase(Data.PREFIX + "pointstop")){
+                    System.out.println(e.getAuthor().getName() + "- Executing Points Top Command");
+                    PointsTopCommand.command(e, message);
+                    command = true;
+                }
+
+                if(first.equalsIgnoreCase(Data.PREFIX + "addpoints") && PermissionUtil.checkPermission(e.getMember(), Permission.ADMINISTRATOR)){
+                    System.out.println(e.getAuthor().getName() + "- Executing Add Points Command");
+                    AddPointsCommand.command(e, message);
+                    command = true;
+                }
+            }*/
 
             if(first.equalsIgnoreCase(Data.PREFIX + "loadusers") && (e.getMessage().getMember().getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("modRoleId")))
                     || PermissionUtil.checkPermission(e.getMember(), Permission.ADMINISTRATOR))){
@@ -192,12 +230,19 @@ public class AllCommands {
                 command = true;
             }
 
-            if(first.equalsIgnoreCase(Data.PREFIX + "wiki")){
+            if(first.equalsIgnoreCase(Data.PREFIX + "lookup") && (channel.equalsIgnoreCase(Data.prop.getProperty("botChannelId")) || (e.getMessage().getMember().getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("modRoleId")))
+                    || PermissionUtil.checkPermission(e.getMember(), Permission.ADMINISTRATOR)))){
+                System.out.println(e.getAuthor().getName() + "- Executing Lookup Command");
+                LookupCommand.command(e, message);
+                command = true;
+            }
+
+            /*if(first.equalsIgnoreCase(Data.PREFIX + "wiki")){
                 System.out.println(e.getAuthor().getName() + "- Executing Wiki Command");
                 WikiCommand.command(e, message);
                 command = true;
-            }
-        } catch (SQLException | UnirestException ex) {
+            }*/
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return command;

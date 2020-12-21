@@ -14,7 +14,7 @@ public class VillagerCommand {
     public static void command(GuildMessageReceivedEvent e, String[] message){
 
         if(message.length < 2){
-            CommandEmbed.errorEB(e, "Please use correct parameters ({}=required) " + Data.PREFIX + "villager {name}");
+            CommandEmbed.errorEB(e, "Please use correct parameters ({}=required) `" + Data.PREFIX + "villager {name}`");
         }
         else{
             String villagerName = message[1];
@@ -29,9 +29,9 @@ public class VillagerCommand {
             if(villager != null){
                 EmbedBuilder eb = new EmbedBuilder();
                 eb.setColor(Data.botColor);
-                eb.setAuthor(villager.getName(), null,  villager.getIcon());
+                eb.setAuthor(villager.getName(), null,  "http://acnhapi.com/v1/icons/villagers/" + villager.getId());
                 //eb.setTitle(villager.getName());
-                eb.setThumbnail(villager.getIcon());
+                eb.setThumbnail("http://acnhapi.com/v1/icons/villagers/" + villager.getId());
                 eb.addField("Personality :smiley:", villager.getPersonality(), true);
                 eb.addBlankField(true);
                 eb.addField("Birthday :birthday:", villager.getBirthday(), true);
@@ -39,8 +39,8 @@ public class VillagerCommand {
                 eb.addBlankField(true);
                 eb.addField("Gender :couple:", villager.getGender(), true);
                 eb.addField("Catchphrase :speech_balloon:", villager.getCatchphrase(), false);
-                eb.setImage("http://acnhapi.com/images/villagers/" + villager.getId());
-                eb.setFooter("Bot by SpiderPigEthan");
+                eb.setImage("http://acnhapi.com/v1/images/villagers/" + villager.getId());
+                eb.setFooter(Data.authorFooter);
                 e.getChannel().sendMessage(eb.build()).queue();
             }
             else{

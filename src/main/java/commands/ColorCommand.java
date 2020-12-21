@@ -22,7 +22,7 @@ public class ColorCommand {
         }
         else{
             if(message.length < 2){
-                CommandEmbed.errorEB(e, "Please use correct parameters ({}=required) " + Data.PREFIX + "color/colour {hex}");
+                CommandEmbed.errorEB(e, "Please use correct parameters ({}=required) `" + Data.PREFIX + "color/colour {hex}`");
             }
             else{
                 colorHex = message[1];
@@ -39,6 +39,7 @@ public class ColorCommand {
                     if(Data.findUserInDB(userId)){
                         System.out.println("User Found");
                         roleId = Data.getDBUser(userId).getRoleId();
+
                         if(roleId != null){
                             System.out.println("Role Found");
                             e.getGuild().getRoleById(roleId).getManager().setName(userName).setColor(color).queue();
@@ -50,10 +51,17 @@ public class ColorCommand {
                             System.out.println("No Role Found, Creating");
                             Role r = e.getGuild().createRole().setName(userName).setColor(color).complete();
                             roleId = r.getId();
-                            e.getGuild().modifyRolePositions(false).selectPosition(r).moveTo(Integer.parseInt(Data.prop.getProperty("rolePosition"))).queue();
+
+                            if(e.getMember().getRoles().contains(e.getGuild().getRoleById(Data.prop.getProperty("modRoleId")))){
+                                e.getGuild().modifyRolePositions(false).selectPosition(r).moveTo(e.getGuild().getRoles().indexOf(e.getGuild().getRoleById(Data.prop.getProperty("modRoleId")))).queue();
+                            }
+                            else{
+                                e.getGuild().modifyRolePositions(false).selectPosition(r).moveTo(e.getGuild().getRoles().indexOf(e.getGuild().getRoleById(Data.prop.getProperty("modRoleId"))) + 1).queue();
+                            }
+
                             e.getGuild().addRoleToMember(e.getMember(), r).queue();
                             Data.updateUserColorInDB(userId, userName, roleId, colorHex);
-                            CommandEmbed.successEB(e, "Created color for " + e.getMember().getAsMention() + ": ",  hex);
+                            CommandEmbed.successEB(e, "Created color for " + e.getMember().getAsMention() + ": ", hex);
                             System.out.println("Created Role: " + roleId + " for User: " + userName + " (" + userId + ") - " + color.toString());
                         }
                     }
@@ -64,6 +72,7 @@ public class ColorCommand {
                     }
                 }
                 catch (NumberFormatException n){
+                    n.printStackTrace();
                     System.out.println("Invalid Format");;
                     CommandEmbed.errorEB(e, "Please enter a valid Hex color code.");
                 }

@@ -21,6 +21,12 @@ public class MessageReactionRemove extends ListenerAdapter {
                     }
                     //🎥
                 }
+                if(e.getMessageId().equalsIgnoreCase(Data.prop.getProperty("gameMessageId")) && e.getReactionEmote().isEmoji()){
+                    if(e.getReactionEmote().getEmoji().equals("\uD83C\uDFAE")){
+                        e.getGuild().removeRoleFromMember(e.getUser().getId(), e.getGuild().getRoleById(Data.prop.getProperty("gameRoleId"))).queue();
+                    }
+                }
+                //🎮
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }

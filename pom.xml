@@ -11,7 +11,8 @@
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>4.1.1_159</version>
+            <version>4.2.0_204</version>
+            <!--<version>4.1.1_159</version>-->
         </dependency>
         <dependency>
             <groupId>org.xerial</groupId>
@@ -66,14 +67,19 @@
     <build>
         <plugins>
             <plugin>
-                <!-- Build an executable JAR -->
+
+                <!-- Building an executable jar -->
+
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
                     <archive>
                         <manifest>
+
+                            <!-- give full qualified name of your main class-->
                             <mainClass>Main</mainClass>
+
                         </manifest>
                     </archive>
                 </configuration>

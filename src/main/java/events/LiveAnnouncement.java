@@ -75,34 +75,9 @@ public class LiveAnnouncement {
 
             List<User> users = twitchClient.getHelix().getUsers(accessToken, Arrays.asList(event.getChannel().getId()),null).execute().getUsers();
             List<Game> games = twitchClient.getHelix().getGames(accessToken, Arrays.asList(event.getGameId()),null).execute().getGames();
-            //List<Stream> streams = twitchClient.getHelix().getStreams(accessToken, null, null, 1, null, null, null, Arrays.asList(event.getChannel().getId()), null).execute().getStreams();
 
             User user = users.get(0);
             Game game = games.get(0);
-            //Stream stream = streams.get(0);
-
-            //Switched to using Twitch4J's methods
-            /*String url = "https://api.twitch.tv/helix/";
-
-            HttpResponse<JsonNode> userData = Unirest.get(url + "users")
-                    .queryString("id", event.getChannel().getId())
-                    .header("Client-ID", Data.prop.getProperty("twitchClientId"))
-                    .asJson();
-
-            HttpResponse<JsonNode> gameData = Unirest.get(url + "games")
-                    .queryString("id", event.getGameId())
-                    .header("Client-ID", Data.prop.getProperty("twitchClientId"))
-                    .asJson();
-
-            System.out.println(userData.getBody().toString());
-            System.out.println(gameData.getBody().toString());
-
-            JSONObject userObj = userData.getBody().getObject().getJSONArray("data").getJSONObject(0);
-            JSONObject gameObj = gameData.getBody().getObject().getJSONArray("data").getJSONObject(0);
-
-            String name = userObj.getString("display_name");
-            String img = userObj.getString("profile_image_url");
-            String game = gameObj.getString("name");*/
 
             channel.sendMessage("@everyone " + user.getDisplayName() + " is live now, playing " + game.getName()).complete();
 
@@ -128,8 +103,7 @@ public class LiveAnnouncement {
 
             eb.addField("Stream Start Time", formatter.format(event.getFiredAt().getTime().toInstant()) + " "  + formatter.getZone().getDisplayName(TextStyle.SHORT, formatter.getLocale()), false);
             eb.setThumbnail(user.getProfileImageUrl());
-            //eb.setTimestamp(event.getFiredAt().getTime().toInstant());
-            eb.setFooter("Bot by SpiderPigEthan");
+            eb.setFooter(Data.authorFooter);
 
             channel.sendMessage(eb.build()).complete();
         }

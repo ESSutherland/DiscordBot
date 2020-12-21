@@ -30,10 +30,10 @@ public class CommandsCommand {
             totalPages = (int)Math.ceil((double)commandList.size()/(double)COMMANDS_PER_PAGE);
 
             if(totalPages < page){
-                CommandEmbed.errorEB(e, "That page does not exist. Last page is " + totalPages + ".");
+                CommandEmbed.errorEB(e, "That page does not exist. Last page is `" + totalPages + "`.");
             }
             else if (page < 1){
-                CommandEmbed.errorEB(e, "That page does not exist. First page is 1.");
+                CommandEmbed.errorEB(e, "That page does not exist. First page is `1`.");
             }
             else{
                 if (commandList.size() > 0) {
@@ -65,16 +65,12 @@ public class CommandsCommand {
 
                             if(i == (COMMANDS_PER_PAGE * (page - 1))){
                                 eb.addField("Command", commandList.get(i)[0], true);
-                                //eb.addBlankField(true);
                                 eb.addField("Response", commandList.get(i)[1], true);
-                                //eb.addBlankField(true);
                                 eb.addField("Permission", perms, true);
                             }
                             else {
                                 eb.addField("", commandList.get(i)[0], true);
-                                //eb.addBlankField(true);
                                 eb.addField("", commandList.get(i)[1], true);
-                                //eb.addBlankField(true);
                                 eb.addField("", perms, true);
                             }
                         }
@@ -82,17 +78,9 @@ public class CommandsCommand {
                             break;
                         }
                     }
-                    //eb.addBlankField(true);
                     eb.addField("", "Page [" + page +"/" + totalPages + "]", true);
-                   // eb.addBlankField(true);
-                    eb.setFooter("Bot by SpiderPigEthan");
+                    eb.setFooter(Data.authorFooter);
                     e.getChannel().sendMessage(eb.build()).queue();
-
-            /*for(String[] s: commandList){
-                list += s[0] + ": " + s[1] + "\n\n";
-            }
-            list += "```";
-            e.getChannel().sendMessage(list).queue();*/
                 }
                 else {
                     CommandEmbed.errorEB(e, "There are no commands.");
@@ -100,7 +88,7 @@ public class CommandsCommand {
             }
         }
         catch (NumberFormatException ex){
-            CommandEmbed.errorEB(e, "Please use correct format: " + Data.PREFIX + "commands {page number} - ({}=required).");
+            CommandEmbed.errorEB(e, "Please use correct parameters ({}=required): `" + Data.PREFIX + "commands {page number}`");
         }
     }
 }

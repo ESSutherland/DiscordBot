@@ -20,16 +20,16 @@ public class AddExpCommand {
             numExp = Integer.parseInt(message[1]);
             Member m = e.getMessage().getMentionedMembers().get(0);
             userId = m.getId();
-            CommandEmbed.successEB(e,"Added " + numExp + " experience to " + e.getGuild().getMemberById(userId).getAsMention() + ".");
+            CommandEmbed.successEB(e,"Added `" + numExp + "` experience to " + e.getGuild().getMemberById(userId).getAsMention() + ".");
             Experience.addExp(e,numExp, m, false);
         }
         else if(message.length > 1){
             numExp = Integer.parseInt(message[1]);
-            CommandEmbed.successEB(e,"Added " + numExp + " experience to " + e.getMember().getAsMention() + ".");
+            CommandEmbed.successEB(e,"Added `" + numExp + "` experience to " + e.getMember().getAsMention() + ".");
             Experience.addExp(e, numExp, false);
         }
         else{
-            CommandEmbed.errorEB(e, "Please use correct parameters ({}=required, []=optional): " + Data.PREFIX + "addexp {amount} [user]");
+            CommandEmbed.errorEB(e, "Please use correct parameters ({}=required, []=optional): `" + Data.PREFIX + "addexp {amount} [user]`");
         }
     }
 }

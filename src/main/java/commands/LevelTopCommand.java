@@ -18,7 +18,7 @@ public class LevelTopCommand {
 
         EmbedBuilder eb = new EmbedBuilder();
         eb.setColor(Data.botColor);
-        eb.setTitle("Top 5 Levels");
+        eb.setTitle("Top 5 Levels in " + e.getGuild().getName());
         int count = 1;
         try{
             String userRank = "";
@@ -32,11 +32,12 @@ public class LevelTopCommand {
                         break;
                     default: userRank = "**-" + (count) + "-";
                 }
-                eb.addField("**--------------------------------------------------------------**",
-                        userRank + " " + e.getGuild().getMemberById(rs.getString("userId")).getAsMention() + " Level: " + rs.getInt("userLevel") + " - Exp: " + rs.getDouble("userExp") + "/" + Data.prop.getProperty("levelExp") + "**", false);
+                eb.addField("", userRank + " " + e.getGuild().getMemberById(rs.getString("userId")).getAsMention() + "**", true);
+                eb.addField("", "`Level: " + rs.getInt("userLevel") + "`", true);
+                eb.addField("",  "Exp: " + rs.getDouble("userExp") + "/" + Data.prop.getProperty("levelExp"), true);
                 count++;
             }
-            eb.setFooter("Bot by SpiderPigEthan");
+            eb.setFooter(Data.authorFooter);
         }
         catch (Exception ex){
             ex.printStackTrace();

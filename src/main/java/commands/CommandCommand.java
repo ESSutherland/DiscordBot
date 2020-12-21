@@ -11,8 +11,8 @@ import java.sql.SQLException;
 public class CommandCommand {
 
     public static void command(GuildMessageReceivedEvent e, String[] message){
-            if (message.length < 3) {
-                CommandEmbed.errorEB(e, "Please use correct format: " + Data.PREFIX + "command {permission flag} {command} {response} - ({}=required). ");
+            if (message.length < 4) {
+                CommandEmbed.errorEB(e, "Please use correct parameters ({}=required): `" + Data.PREFIX + "command {permission flag} {command} {response}`. ");
             } else {
                 String command = message[2].toLowerCase();
                 String commandLevel = message[1];
@@ -25,9 +25,9 @@ public class CommandCommand {
                         || commandLevel.equalsIgnoreCase("-s") || commandLevel.equalsIgnoreCase("-m")){
                     try {
                         CommandData.addCommand(command, commandMessage, commandLevel);
-                        CommandEmbed.successEB(e, "Command " + command + " created.");
+                        CommandEmbed.successEB(e, "Command `" + command + "` created.");
                     } catch (SQLException ex) {
-                        CommandEmbed.errorEB(e, "Command already exists.");
+                        CommandEmbed.errorEB(e, "Command `" + command + "` already exists.");
                     }
                 }
                 else if(e.getMessage().getMentionedMembers().size() > 0){
@@ -38,14 +38,14 @@ public class CommandCommand {
                         Member member = e.getMessage().getMentionedMembers().get(0);
                         try {
                             CommandData.addCommand(command, commandMessage, member.getId());
-                            CommandEmbed.successEB(e, "Command " + command + " created.");
+                            CommandEmbed.successEB(e, "Command `" + command + "` created.");
                         } catch (SQLException ex) {
-                            CommandEmbed.errorEB(e, "Command already exists.");
+                            CommandEmbed.errorEB(e, "Command `" + command + "` already exists.");
                         }
                     }
                 }
                 else{
-                    CommandEmbed.errorEB(e, "Please use a valid permission flag. -a = Everyone, -b = Nitro Boosters, -s = Subscribers, or you can @ a user to make a private command.");
+                    CommandEmbed.errorEB(e, "Please use a valid permission flag. `-a` = Everyone, `-b` = Nitro Boosters, `-s` = Subscribers, `-m` = Mods, or you can `@ a user` to make a private command.");
                 }
             }
     }

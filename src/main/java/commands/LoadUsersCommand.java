@@ -94,15 +94,35 @@ public class LoadUsersCommand {
         }
 
         for(DBUser user : Data.userList){
-            if(!members.contains(guild.getMemberById(user.getUserId()))){
+            if(!members.contains(guild.getMemberById(user.getUserId()))) {
                 System.out.println("Removing " + user.getUserName() + " from DB");
+
+                if(user.getRoleId() != null){
+                    guild.getRoleById(user.getRoleId()).delete().queue();
+                    System.out.println("Deleting Nitro Role For " + user.getUserName());
+                    Data.updateUserColorInDB(user.getUserId(), user.getUserName(), null, null);
+                }
+
+                if (user.getMcUsername() != null) {
+                    MCWhitelistCommand.connect();
+                    MCWhitelistCommand.unWhitelist(user.getUserId());
+                    MCWhitelistCommand.disconnect();
+                }
                 Data.removeUserFromDB(user.getUserId());
             }
+            else{
+                if(user.getRoleId() != null && !guild.getMemberById(user.getUserId()).getRoles().contains(guild.getRoleById(Data.prop.getProperty("nitroRoleId")))){
+                    guild.getRoleById(user.getRoleId()).delete().queue();
+                    System.out.println("Deleting Nitro Role For " + user.getUserName());
+                    Data.updateUserColorInDB(user.getUserId(), user.getUserName(), null, null);
+                }
 
-            if(user.getRoleId() != null && !guild.getMemberById(user.getUserId()).getRoles().contains(guild.getRoleById(Data.prop.getProperty("nitroRoleId")))){
-                guild.getRoleById(user.getRoleId()).delete().queue();
-                System.out.println("Deleting Nitro Role For " + user.getUserName());
-                Data.updateUserColorInDB(user.getUserId(), user.getUserName(), null, null);
+                if(user.getMcUsername() != null && !guild.getMemberById(user.getUserId()).getRoles().contains(guild.getRoleById(Data.prop.getProperty("subRoleId")))){
+                    MCWhitelistCommand.connect();
+                    MCWhitelistCommand.unWhitelist(user.getUserId());
+                    MCWhitelistCommand.disconnect();
+                    Data.updateMCUserName(null, user.getUserId());
+                }
             }
         }
         System.out.println("\nUsers Loaded - "+ Data.userList.size());
